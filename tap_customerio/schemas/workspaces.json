@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "messages_sent": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "billable_messages_sent": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "people": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "object_types": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "objects": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        }
+    }
+}

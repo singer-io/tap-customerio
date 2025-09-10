@@ -1,0 +1,168 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "deduplicate_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "description": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "state": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "progress": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "tags": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            }
+        },
+        "conditions": {
+            "type": "object",
+            "properties": {
+                "and": {
+                    "type": [
+                        "null",
+                        "array"
+                    ],
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "event": {
+                                "type": "object",
+                                "properties": {
+                                    "filters": {
+                                        "type": "object",
+                                        "properties": {
+                                            "and": {
+                                                "type": [
+                                                    "null",
+                                                    "array"
+                                                ],
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "field": {
+                                                            "type": [
+                                                                "null",
+                                                                "string"
+                                                            ]
+                                                        },
+                                                        "inverse": {
+                                                            "type": [
+                                                                "null",
+                                                                "boolean"
+                                                            ]
+                                                        },
+                                                        "operator": {
+                                                            "type": [
+                                                                "null",
+                                                                "string"
+                                                            ]
+                                                        },
+                                                        "value": {
+                                                            "type": [
+                                                                "null",
+                                                                "string"
+                                                            ]
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "id": {
+                                        "type": [
+                                            "null",
+                                            "integer"
+                                        ]
+                                    },
+                                    "name": {
+                                        "type": [
+                                            "null",
+                                            "string"
+                                        ]
+                                    },
+                                    "type": {
+                                        "type": [
+                                            "null",
+                                            "string"
+                                        ]
+                                    }
+                                }
+                            },
+                            "inverse": {
+                                "type": [
+                                    "null",
+                                    "boolean"
+                                ]
+                            },
+                            "times": {
+                                "type": [
+                                    "null",
+                                    "integer"
+                                ]
+                            },
+                            "within": {
+                                "type": [
+                                    "null",
+                                    "integer"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "created_at": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "updated_at": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        }
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "type": "object",
+    "properties": {
+        "type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "disabled": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "endpoint": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "events": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            }
+        },
+        "full_resolution": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "with_content": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        }
+    }
+}

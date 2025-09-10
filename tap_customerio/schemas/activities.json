@@ -1,0 +1,82 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "customer_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "customer_identifiers": {
+            "type": "object",
+            "properties": {
+                "cio_id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "email": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "timestamp": {
+            "type": [
+                "null",
+                "string"
+            ],
+            "format": "date-time"
+        },
+        "data": {
+            "type": "object",
+            "properties": {
+                "entered": {
+                    "type": [
+                        "null",
+                        "array"
+                    ],
+                    "items": {
+                        "type": [
+                            "null",
+                            "integer"
+                        ]
+                    }
+                }
+            }
+        },
+        "delivery_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "delivery_type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    }
+}

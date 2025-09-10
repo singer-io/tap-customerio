@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "created": {
+            "type": [
+                "null",
+                "string"
+            ],
+            "format": "date-time"
+        },
+        "email": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "reason": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "status": {
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    }
+}
