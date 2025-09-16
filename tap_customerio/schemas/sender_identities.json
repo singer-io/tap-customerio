@@ -1,1 +1,47 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "deduplicate_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "email": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "address": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "template_type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "auto_generated": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        }
+    }
+}

@@ -1,1 +1,64 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "cio_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "_last_emailed": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "email": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "unsubscribed": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "_cio_subscription_preferences_computed": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "cio_subscription_preferences": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "additionalProperties": {
+            "type": "object",
+            "properties": {
+                "x-additionalPropertiesName": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "description": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        }
+    }
+}

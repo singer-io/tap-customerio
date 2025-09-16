@@ -1,1 +1,71 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "description": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "send_to_unsubscribed": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "link_tracking": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "open_tracking": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "hide_message_body": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "queue_drafts": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "trigger_name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "created_at": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "updated_at": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        }
+    }
+}

@@ -1,1 +1,11 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "ip_addresses": {
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    }
+}
