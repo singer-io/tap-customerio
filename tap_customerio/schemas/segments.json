@@ -156,13 +156,15 @@
             "type": [
                 "null",
                 "integer"
-            ]
+            ],
+          "format": "date-time"
         },
         "updated_at": {
             "type": [
                 "null",
                 "integer"
-            ]
+            ],
+          "format": "date-time"
         }
     }
 }

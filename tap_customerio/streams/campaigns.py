@@ -5,7 +5,6 @@ class Campaigns(IncrementalStream):
     key_properties = ["id"]
     replication_method = "INCREMENTAL"
     replication_keys = ["updated"]
-    # replication_keys = ["updated_at"]
     data_key = "campaigns"
     path = "campaigns"
 

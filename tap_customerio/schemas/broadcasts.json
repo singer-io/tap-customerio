@@ -36,7 +36,8 @@
             "type": [
                 "null",
                 "integer"
-            ]
+            ],
+          "format": "date-time"
         },
         "active": {
             "type": [

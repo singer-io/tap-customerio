@@ -48,7 +48,8 @@
             "type": [
                 "null",
                 "integer"
-            ]
+            ],
+          "format": "date-time"
         },
         "type": {
             "type": [
