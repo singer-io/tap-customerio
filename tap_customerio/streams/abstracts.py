@@ -35,7 +35,7 @@ class BaseStream(ABC):
     parent = ""
     data_key = ""
     parent_bookmark_key = ""
-    http_method = "POST"
+    http_method = "GET"
 
     def __init__(self, client=None, catalog=None) -> None:
         self.client = client
@@ -97,10 +97,28 @@ class BaseStream(ABC):
         """
 
 
+    # def get_records(self) -> Iterator:
+    #     """Interacts with api client interaction and pagination."""
+    #     self.params["page"] = self.page_size
+    #     next_page = 1
+    #     while next_page:
+    #         response = self.client.make_request(
+    #             self.http_method,
+    #             self.url_endpoint,
+    #             self.params,
+    #             self.headers,
+    #             body=json.dumps(self.data_payload),
+    #             path=self.path
+    #         )
+    #         raw_records = response.get(self.data_key, [])
+    #         next_page = response.get(self.next_page_key)
+    #
+    #         self.params[self.next_page_key] = next_page
+    #         yield from raw_records
     def get_records(self) -> Iterator:
-        """Interacts with api client interaction and pagination."""
+        """Interacts with API client and handles pagination."""
         self.params["page"] = self.page_size
-        next_page = 1
+        next_page = 1  # Start from page 1
         while next_page:
             response = self.client.make_request(
                 self.http_method,
@@ -110,9 +128,14 @@ class BaseStream(ABC):
                 body=json.dumps(self.data_payload),
                 path=self.path
             )
-            raw_records = response.get(self.data_key, [])
+            raw_records = response.get(self.data_key, None)
+            if raw_records is None:
+                raw_records = []  # Default to an empty list if None
+            elif isinstance(raw_records, dict):
+                raw_records = list(raw_records.values())  # Convert dict values to list if it's a dict
+            if not isinstance(raw_records, (list, dict)):
+                raw_records = []  # If it's something unexpected, default to an empty list
             next_page = response.get(self.next_page_key)
-
             self.params[self.next_page_key] = next_page
             yield from raw_records
 
@@ -230,9 +253,10 @@ class FullTableStream(BaseStream):
     ) -> Dict:
         """Abstract implementation for `type: Fulltable` stream."""
         self.url_endpoint = self.get_url_endpoint(parent_obj)
-        self.update_data_payload(parent_obj)
+        self.update_data_payload(parent_obj=parent_obj)
         with metrics.record_counter(self.tap_stream_id) as counter:
             for record in self.get_records():
+                record = self.modify_object(record, parent_obj)
                 transformed_record = transformer.transform(
                     record, self.schema, self.metadata
                 )
