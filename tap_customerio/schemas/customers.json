@@ -10,8 +10,9 @@
         "_last_emailed": {
             "type": [
                 "null",
-                "integer"
-            ]
+                "string"
+            ],
+          "format": "date-time"
         },
         "email": {
             "type": [
