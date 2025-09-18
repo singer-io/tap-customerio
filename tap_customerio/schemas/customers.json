@@ -29,7 +29,7 @@
         "unsubscribed": {
             "type": [
                 "null",
-                "integer"
+                "boolean"
             ]
         },
         "_cio_subscription_preferences_computed": {

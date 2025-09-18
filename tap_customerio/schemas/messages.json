@@ -65,33 +65,38 @@
             "properties": {
                 "bounced": {
                     "type": [
-                        "null",
-                        "integer"
-                    ]
+                          "null",
+                          "string"
+                      ],
+                      "format": "date-time"
                 },
                 "clicked": {
                     "type": [
-                        "null",
-                        "integer"
-                    ]
+                          "null",
+                          "string"
+                      ],
+                      "format": "date-time"
                 },
                 "human_clicked": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "prefetch_clicked": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "converted": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "created": {
                     "type": [
@@ -103,68 +108,79 @@
                 "delivered": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "drafted": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "dropped": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "failed": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "opened": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "human_opened": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "prefetch_opened": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "sent": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "spammed": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "undeliverable": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 },
                 "unsubscribed": {
                     "type": [
                         "null",
-                        "integer"
-                    ]
+                        "string"
+                    ],
+                  "format": "date-time"
                 }
             }
         },

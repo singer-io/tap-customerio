@@ -8,43 +8,43 @@ This tap:
 
 - Pulls raw data from the [customerio API].
 - Extracts the following resources:
-    - [Broadcasts](https://fly.customer.io/workspaces/196173/journeys/home)
+    - [Broadcasts](https://docs.customer.io/integrations/api/app/#operation/listBroadcasts)
 
-    - [Transactional](https://fly.customer.io/workspaces/196173/journeys/home)
+    - [Transactional](https://docs.customer.io/integrations/api/app/#tag/Transactional)
 
-    - [Customers](https://fly.customer.io/workspaces/196173/journeys/home)
+    - [Customers](https://docs.customer.io/integrations/api/app/#tag/Customers)
 
-    - [Campaigns](https://fly.customer.io/workspaces/196173/journeys/home)
+    - [Campaigns](https://docs.customer.io/integrations/api/app/#tag/Campaigns)
 
-    - [Newsletters](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Newsletters](https://docs.customer.io/integrations/api/app/#tag/Newsletters)
 
-    - [Segments](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Segments](https://docs.customer.io/integrations/api/app/#tag/Snippets)
 
-    - [Messages](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Messages](https://docs.customer.io/integrations/api/app/#tag/Messages)
 
-    - [Exports](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Exports](https://docs.customer.io/integrations/api/app/#tag/Exports)
 
-    - [Activities](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Activities](https://docs.customer.io/integrations/api/app/#tag/Activities)
 
-    - [SenderIdentities](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [SenderIdentities](https://docs.customer.io/integrations/api/app/#tag/Sender-Identities)
 
-    - [ReportingWebhooks](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [ReportingWebhooks](https://docs.customer.io/integrations/api/app/#tag/Reporting-Webhooks)
 
-    - [Snippets](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Snippets](https://docs.customer.io/integrations/api/app/#tag/Snippets)
 
-    - [Info](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Info](https://docs.customer.io/integrations/api/app/#tag/Info)
 
-    - [Collections](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Collections](https://docs.customer.io/integrations/api/app/#tag/Collections)
 
-    - [Imports](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Imports](https://docs.customer.io/integrations/api/app/#tag/Imports)
 
-    - [SubscriptionCenter](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [SubscriptionCenter](https://docs.customer.io/integrations/api/app/#tag/Subscription-Center)
 
-    - [Workspaces](https://www.postman.com/galactic-resonance-157195/customer-io-apis/request/ez0g7z2/list-workspaces)
+    - [Workspaces](https://docs.customer.io/integrations/api/app/#tag/Workspaces)
 
-    - [Objects](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [Objects](https://docs.customer.io/integrations/api/app/#tag/Objects)
 
-    - [EpsSuppression](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)
+    - [EpsSuppression](https://docs.customer.io/integrations/api/app/#tag/ESP-Suppression)
 
 - Outputs the schema for each resource
 - Incrementally pulls data based on the input state
@@ -53,97 +53,97 @@ This tap:
 ## Streams
 
 
-**[broadcasts](https://fly.customer.io/workspaces/196173/journeys/home)**
+**[broadcasts](https://docs.customer.io/integrations/api/app/#operation/listBroadcasts)**
 - Data Key = broadcasts
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[transactional](https://fly.customer.io/workspaces/196173/journeys/home)**
+**[transactional](https://docs.customer.io/integrations/api/app/#tag/Transactional)**
 - Data Key = messages
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[customers](https://fly.customer.io/workspaces/196173/journeys/home)**
+**[customers](https://docs.customer.io/integrations/api/app/#tag/Customers)**
 - Data Key = customers
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[campaigns](https://fly.customer.io/workspaces/196173/journeys/home)**
+**[campaigns](https://docs.customer.io/integrations/api/app/#tag/Campaigns)**
 - Data Key = campaigns
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[newsletters](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[newsletters](https://docs.customer.io/integrations/api/app/#tag/Newsletters)**
 - Data Key = newsletters
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[segments](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[segments](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = segments
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[messages](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[messages](https://docs.customer.io/integrations/api/app/#tag/Messages)**
 - Data Key = messages
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE
 
-**[exports](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[exports](https://docs.customer.io/integrations/api/app/#tag/Exports)**
 - Data Key = exports
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[activities](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[activities](https://docs.customer.io/integrations/api/app/#tag/Activities)**
 - Data Key = activities
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE
 
-**[sender_identities](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[sender_identities](https://docs.customer.io/integrations/api/app/#tag/Sender-Identities)**
 - Data Key = sender_identities
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE
 
-**[reporting_webhooks](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[reporting_webhooks](https://docs.customer.io/integrations/api/app/#tag/Reporting-Webhooks)**
 - Data Key = reporting_webhooks
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[snippets](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[snippets](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = snippets
 - Primary keys: ['snippet_name']
 - Replication strategy: INCREMENTAL
 
-**[info](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[info](https://docs.customer.io/integrations/api/app/#tag/Info)**
 - Data Key = ip_addresses
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE
 
-**[collections](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[collections](https://docs.customer.io/integrations/api/app/#tag/Collections)**
 - Data Key = collections
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[imports](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[imports](https://docs.customer.io/integrations/api/app/#tag/Imports)**
 - Data Key = import
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[subscription_center](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[subscription_center](https://docs.customer.io/integrations/api/app/#tag/Subscription-Center)**
 - Data Key = topics
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE
 
-**[workspaces](https://www.postman.com/galactic-resonance-157195/customer-io-apis/request/ez0g7z2/list-workspaces)**
+**[workspaces](https://docs.customer.io/integrations/api/app/#tag/Workspaces)**
 - Data Key = Workspaces
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE
 
-**[objects](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[objects](https://docs.customer.io/integrations/api/app/#tag/Objects)**
 - Data Key = types
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE
 
-**[eps_suppression](https://help.getharvest.com/api-v2/invoices-api/invoices/invoices/)**
+**[eps_suppression](https://docs.customer.io/integrations/api/app/#tag/ESP-Suppression)**
 - Data Key = suppressions
 - Primary keys: ['id']
 - Replication strategy: FULL_TABLE

@@ -24,7 +24,7 @@
         "id": {
             "type": [
                 "null",
-                "integer"
+                "string"
             ]
         },
         "name": {
