@@ -12,7 +12,6 @@ from tap_customerio.streams.reporting_webhooks import ReportingWebhooks
 from tap_customerio.streams.snippets import Snippets
 from tap_customerio.streams.info import Info
 from tap_customerio.streams.collections import Collections
-from tap_customerio.streams.imports import Imports
 from tap_customerio.streams.subscription_center import SubscriptionCenter
 from tap_customerio.streams.workspaces import Workspaces
 from tap_customerio.streams.objects import Objects
@@ -33,7 +32,6 @@ STREAMS = {
     "snippets": Snippets,
     "info": Info,
     "collections": Collections,
-    "imports": Imports,
     "subscription_center": SubscriptionCenter,
     "workspaces": Workspaces,
     "objects": Objects,

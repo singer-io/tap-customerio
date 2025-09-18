@@ -36,8 +36,6 @@ This tap:
 
     - [Collections](https://docs.customer.io/integrations/api/app/#tag/Collections)
 
-    - [Imports](https://docs.customer.io/integrations/api/app/#tag/Imports)
-
     - [SubscriptionCenter](https://docs.customer.io/integrations/api/app/#tag/Subscription-Center)
 
     - [Workspaces](https://docs.customer.io/integrations/api/app/#tag/Workspaces)
@@ -120,11 +118,6 @@ This tap:
 
 **[collections](https://docs.customer.io/integrations/api/app/#tag/Collections)**
 - Data Key = collections
-- Primary keys: ['id']
-- Replication strategy: INCREMENTAL
-
-**[imports](https://docs.customer.io/integrations/api/app/#tag/Imports)**
-- Data Key = import
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
