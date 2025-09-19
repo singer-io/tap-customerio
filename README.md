@@ -10,7 +10,7 @@ This tap:
 - Extracts the following resources:
     - [Broadcasts](https://docs.customer.io/integrations/api/app/#operation/listBroadcasts)
 
-    - [Transactional](https://docs.customer.io/integrations/api/app/#tag/Transactional)
+    - [TransactionalMessages](https://docs.customer.io/integrations/api/app/#tag/Transactional)
 
     - [Customers](https://docs.customer.io/integrations/api/app/#tag/Customers)
 
@@ -56,7 +56,7 @@ This tap:
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
 
-**[transactional](https://docs.customer.io/integrations/api/app/#tag/Transactional)**
+**[transactional_messages](https://docs.customer.io/integrations/api/app/#tag/Transactional)**
 - Data Key = messages
 - Primary keys: ['id']
 - Replication strategy: INCREMENTAL
@@ -179,7 +179,8 @@ This tap:
         "start_date": "2019-01-01T00:00:00Z",
         "user_agent": "tap-customerio <api_user_email@your_company.com>",
         "request_timeout": 300
-    }```
+    }
+   ```
 
     Optionally, also create a `state.json` file. `currently_syncing` is an optional attribute used for identifying the last object to be synced in case the job is interrupted mid-stream. The next run would begin where the last job left off.
 

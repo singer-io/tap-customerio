@@ -40,7 +40,7 @@ class customerioBaseTest(BaseCase):
                 cls.OBEYS_START_DATE: False,
                 cls.API_LIMIT: 100
             },
-            "transactional": {
+            "transactional_messages": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },

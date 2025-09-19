@@ -1,5 +1,5 @@
 from tap_customerio.streams.broadcasts import Broadcasts
-from tap_customerio.streams.transactional import Transactional
+from tap_customerio.streams.transactional_messages import TransactionalMessages
 from tap_customerio.streams.customers import Customers
 from tap_customerio.streams.campaigns import Campaigns
 from tap_customerio.streams.newsletters import Newsletters
@@ -19,7 +19,7 @@ from tap_customerio.streams.eps_suppression import EpsSuppression
 
 STREAMS = {
     "broadcasts": Broadcasts,
-    "transactional": Transactional,
+    "transactional_messages": TransactionalMessages,
     "customers": Customers,
     "campaigns": Campaigns,
     "newsletters": Newsletters,
