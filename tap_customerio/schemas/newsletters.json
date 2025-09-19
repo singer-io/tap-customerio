@@ -1,1 +1,92 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "deduplicate_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "content_ids": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": [
+                    "null",
+                    "integer"
+                ]
+            }
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "sent_at": {
+            "type": [
+                "null",
+                "string"
+            ],
+          "format": "date-time"
+        },
+        "created": {
+            "type": [
+                "null",
+                "string"
+            ],
+            "format": "date-time"
+        },
+        "updated": {
+            "type": [
+                "null",
+                "string"
+            ],
+          "format": "date-time"
+        },
+        "type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "tags": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            }
+        },
+        "recipient_segment_ids": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": [
+                    "null",
+                    "integer"
+                ]
+            }
+        },
+        "subscription_topic_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        }
+    }
+}

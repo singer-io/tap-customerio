@@ -20,7 +20,7 @@ class customerioInterruptedSyncTest(customerioBaseTest):
             "currently_syncing": "prospects",
             "bookmarks": {
                 "broadcasts": { "updated_at" : "2020-01-01T00:00:00Z"},
-                "transactional": { "updated_at" : "2020-01-01T00:00:00Z"},
+                "transactional_messages": { "updated_at" : "2020-01-01T00:00:00Z"},
                 "customers": { "updated_at" : "2020-01-01T00:00:00Z"},
                 "campaigns": { "updated_at" : "2020-01-01T00:00:00Z"},
                 "newsletters": { "updated_at" : "2020-01-01T00:00:00Z"},

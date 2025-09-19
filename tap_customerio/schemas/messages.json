@@ -1,1 +1,255 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "deduplicate_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "message_template_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "customer_id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "customer_identifiers": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                },
+                "cio_id": {
+                    "type": [
+                        "null",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "recipient": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "subject": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "metrics": {
+            "type": "object",
+            "properties": {
+                "bounced": {
+                    "type": [
+                          "null",
+                          "string"
+                      ],
+                      "format": "date-time"
+                },
+                "clicked": {
+                    "type": [
+                          "null",
+                          "string"
+                      ],
+                      "format": "date-time"
+                },
+                "human_clicked": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "prefetch_clicked": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "converted": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "created": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                    "format": "date-time"
+                },
+                "delivered": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "drafted": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "dropped": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "failed": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "opened": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "human_opened": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "prefetch_opened": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "sent": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "spammed": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "undeliverable": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                },
+                "unsubscribed": {
+                    "type": [
+                        "null",
+                        "string"
+                    ],
+                  "format": "date-time"
+                }
+            }
+        },
+        "created": {
+            "type": [
+                "null",
+                "string"
+            ],
+            "format": "date-time"
+        },
+        "failure_message": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "campaign_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "action_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "parent_action_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "newsletter_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "content_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "broadcast_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "trigger_event_id": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "type": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "forgotten": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        }
+    }
+}

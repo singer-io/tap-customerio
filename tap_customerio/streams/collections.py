@@ -1,11 +1,10 @@
-from tap_customerio.streams.abstracts import ChildBaseStream
+from tap_customerio.streams.abstracts import IncrementalStream
 
-class Collections(ChildBaseStream):
+class Collections(IncrementalStream):
     tap_stream_id = "collections"
     key_properties = ["id"]
     replication_method = "INCREMENTAL"
+    replication_keys = ['updated_at']
     data_key = "collections"
     path = "collections"
-    parent = "collections"
-    bookmark_value = None
 
