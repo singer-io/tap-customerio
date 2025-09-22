@@ -7,40 +7,10 @@
                 "string"
             ]
         },
-        "user_id": {
-            "type": [
-                "null",
-                "integer"
-            ]
-        },
-        "user_email": {
+        "name": {
             "type": [
                 "null",
                 "string"
-            ]
-        },
-        "total": {
-            "type": [
-                "null",
-                "integer"
-            ]
-        },
-        "deduplicate_id": {
-            "type": [
-                "null",
-                "string"
-            ]
-        },
-        "type": {
-            "type": [
-                "null",
-                "string"
-            ]
-        },
-        "failed": {
-            "type": [
-                "null",
-                "boolean"
             ]
         },
         "description": {
@@ -49,10 +19,40 @@
                 "string"
             ]
         },
-        "downloads": {
+        "send_to_unsubscribed": {
             "type": [
                 "null",
-                "integer"
+                "boolean"
+            ]
+        },
+        "link_tracking": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "open_tracking": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "hide_message_body": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "queue_drafts": {
+            "type": [
+                "null",
+                "boolean"
+            ]
+        },
+        "trigger_name": {
+            "type": [
+                "null",
+                "string"
             ]
         },
         "created_at": {
@@ -68,12 +68,6 @@
                 "string"
             ],
           "format": "date-time"
-        },
-        "status": {
-            "type": [
-                "null",
-                "string"
-            ]
         }
     }
 }

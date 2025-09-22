@@ -1,1 +1,55 @@
-{}
+{
+    "type": "object",
+    "properties": {
+        "bytes": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "created_at": {
+            "type": [
+                "null",
+                "string"
+            ],
+          "format": "date-time"
+        },
+        "updated_at": {
+            "type": [
+                "null",
+                "string"
+            ],
+          "format": "date-time"
+        },
+        "id": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "name": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "rows": {
+            "type": [
+                "null",
+                "integer"
+            ]
+        },
+        "schema": {
+            "type": [
+                "null",
+                "array"
+            ],
+            "items": {
+                "type": [
+                    "null",
+                    "string"
+                ]
+            }
+        }
+    }
+}
