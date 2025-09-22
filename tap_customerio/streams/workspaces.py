@@ -7,4 +7,3 @@ class Workspaces(FullTableStream):
     replication_keys = []
     data_key = "Workspaces"
     path = "Workspaces"
-

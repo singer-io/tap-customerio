@@ -22,7 +22,7 @@
         "id": {
             "type": [
                 "null",
-                "integer"
+                "string"
             ]
         },
         "identifier": {

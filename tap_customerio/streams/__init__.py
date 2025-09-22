@@ -1,5 +1,5 @@
 from tap_customerio.streams.broadcasts import Broadcasts
-from tap_customerio.streams.transactional import Transactional
+from tap_customerio.streams.transactional_messages import TransactionalMessages
 from tap_customerio.streams.customers import Customers
 from tap_customerio.streams.campaigns import Campaigns
 from tap_customerio.streams.newsletters import Newsletters
@@ -12,7 +12,6 @@ from tap_customerio.streams.reporting_webhooks import ReportingWebhooks
 from tap_customerio.streams.snippets import Snippets
 from tap_customerio.streams.info import Info
 from tap_customerio.streams.collections import Collections
-from tap_customerio.streams.imports import Imports
 from tap_customerio.streams.subscription_center import SubscriptionCenter
 from tap_customerio.streams.workspaces import Workspaces
 from tap_customerio.streams.objects import Objects
@@ -20,7 +19,7 @@ from tap_customerio.streams.eps_suppression import EpsSuppression
 
 STREAMS = {
     "broadcasts": Broadcasts,
-    "transactional": Transactional,
+    "transactional_messages": TransactionalMessages,
     "customers": Customers,
     "campaigns": Campaigns,
     "newsletters": Newsletters,
@@ -33,7 +32,6 @@ STREAMS = {
     "snippets": Snippets,
     "info": Info,
     "collections": Collections,
-    "imports": Imports,
     "subscription_center": SubscriptionCenter,
     "workspaces": Workspaces,
     "objects": Objects,
