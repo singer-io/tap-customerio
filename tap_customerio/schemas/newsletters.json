@@ -4,7 +4,7 @@
         "id": {
             "type": [
                 "null",
-                "integer"
+                "string"
             ]
         },
         "deduplicate_id": {
@@ -34,8 +34,9 @@
         "sent_at": {
             "type": [
                 "null",
-                "integer"
-            ]
+                "string"
+            ],
+          "format": "date-time"
         },
         "created": {
             "type": [
@@ -47,8 +48,9 @@
         "updated": {
             "type": [
                 "null",
-                "integer"
-            ]
+                "string"
+            ],
+          "format": "date-time"
         },
         "type": {
             "type": [

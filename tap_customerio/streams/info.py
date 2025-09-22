@@ -17,3 +17,4 @@ class Info(FullTableStream):
         rec = dict()
         rec["ip_addresses"] = record
         return rec
+

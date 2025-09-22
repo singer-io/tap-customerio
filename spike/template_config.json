@@ -1,0 +1,182 @@
+{
+    "tap_name": "customerio",
+    "required_config_keys": ["access_token", "start_date"],
+    "page_size": 100,
+    "next_page_key": "next",
+    "pagination_key": "page",
+    "headers": {"Accept": "application/json"},
+    "params": {},
+    "auth_header_key": "Authorization",
+    "auth_config_key": "access_token",
+    "base_url": "https://api.customer.io/v1/",
+    "streams": [
+        {
+            "name": "broadcasts",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
+            "path": "broadcasts",
+            "data_key": "broadcasts",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#operation/listBroadcasts"
+        },
+        {
+            "name": "transactional",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
+            "path": "transactional",
+            "data_key": "messages",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Transactional"
+        },
+        {
+            "name": "customers",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
+            "path": "customers/attributes",
+            "data_key": "customers",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Customers"
+        },
+        {
+            "name": "campaigns",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
+            "path": "campaigns",
+            "data_key": "campaigns",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Campaigns"
+        },
+        {
+            "name": "newsletters",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
+            "path": "newsletters",
+            "data_key": "newsletters",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Newsletters"
+        },
+        {
+            "name": "segments",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
+            "path": "segments",
+            "data_key": "segments",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Snippets"
+        },
+        {
+            "name": "messages",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "messages",
+            "data_key": "messages",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Messages"
+        },
+        {
+            "name": "exports",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
+            "path": "exports",
+            "data_key": "exports",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Exports"
+        },
+        {
+            "name": "activities",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "activities",
+            "data_key": "activities",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Activities"
+        },
+        {
+            "name": "sender_identities",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "sender_identities",
+            "data_key": "sender_identities",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Sender-Identities"
+        },
+        {
+            "name": "reporting_webhooks",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "path": "reporting_webhooks",
+            "data_key": "reporting_webhooks",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Reporting-Webhooks"
+        },
+        {
+            "name": "snippets",
+            "key_properties": ["snippet_name"],
+            "replication_method": "INCREMENTAL",
+            "path": "snippets",
+            "data_key": "snippets",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Snippets"
+        },
+        {
+            "name": "info",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "info/ip_addresses",
+            "data_key": "ip_addresses",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Info"
+        },
+        {
+            "name": "collections",
+            "key_properties": ["id"],
+            "replication_method": "INCREMENTAL",
+            "path": "collections",
+            "data_key": "collections",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Collections"
+        },
+        {
+            "name": "subscription_center",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "subscription_topics",
+            "data_key": "topics",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Subscription-Center"
+        },
+        {
+            "name": "workspaces",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "Workspaces",
+            "data_key": "Workspaces",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Workspaces"
+        },
+        {
+            "name": "objects",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "object_types",
+            "data_key": "types",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Objects"
+        },
+        {
+            "name": "eps_suppression",
+            "key_properties": ["id"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
+            "path": "esp/suppression",
+            "data_key": "suppressions",
+            "doc_link": "https://docs.customer.io/integrations/api/app/#tag/ESP-Suppression"
+        }
+    ],
+    "tap_tester_creds": {
+        "access_token": "TAP_CUSTOMERIO_TOKEN"
+    },
+    "author": "Stitch",
+    "third_party_dependencies": [
+        "singer-python==6.1.1",
+        "requests==2.32.4",
+        "backoff==2.2.1"
+    ]
+}

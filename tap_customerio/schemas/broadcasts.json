@@ -4,7 +4,7 @@
         "id": {
             "type": [
                 "null",
-                "integer"
+                "string"
             ]
         },
         "deduplicate_id": {
@@ -35,8 +35,9 @@
         "updated": {
             "type": [
                 "null",
-                "integer"
-            ]
+                "string"
+            ],
+          "format": "date-time"
         },
         "active": {
             "type": [
@@ -76,8 +77,9 @@
         "first_started": {
             "type": [
                 "null",
-                "integer"
-            ]
+                "string"
+            ],
+          "format": "date-time"
         },
         "tags": {
             "type": [

@@ -8,3 +8,4 @@ class Newsletters(IncrementalStream):
     data_key = "newsletters"
     path = "newsletters"
 
+
