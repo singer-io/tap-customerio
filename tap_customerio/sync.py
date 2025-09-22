@@ -48,7 +48,6 @@ def sync(client: Client, config: Dict, catalog: singer.Catalog, state) -> None:
     LOGGER.info("last/currently syncing stream: {}".format(last_stream))
 
     with singer.Transformer(integer_datetime_fmt=UNIX_SECONDS_INTEGER_DATETIME_PARSING) as transformer:
-    # with singer.Transformer() as transformer:
         for stream_name in streams_to_sync:
 
             stream = STREAMS[stream_name](client, catalog.get_stream(stream_name))
