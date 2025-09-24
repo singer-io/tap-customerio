@@ -14,13 +14,13 @@
             "name": "broadcasts",
             "key_properties": ["id"],
             "replication_method": "INCREMENTAL",
-            "replication_keys": ["updated_at"],
+            "replication_keys": ["updated"],
             "path": "broadcasts",
             "data_key": "broadcasts",
             "doc_link": "https://docs.customer.io/integrations/api/app/#operation/listBroadcasts"
         },
         {
-            "name": "transactional",
+            "name": "transactional_messages",
             "key_properties": ["id"],
             "replication_method": "INCREMENTAL",
             "replication_keys": ["updated_at"],
@@ -31,8 +31,8 @@
         {
             "name": "customers",
             "key_properties": ["id"],
-            "replication_method": "INCREMENTAL",
-            "replication_keys": ["updated_at"],
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
             "path": "customers/attributes",
             "data_key": "customers",
             "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Customers"
@@ -103,7 +103,8 @@
         {
             "name": "reporting_webhooks",
             "key_properties": ["id"],
-            "replication_method": "INCREMENTAL",
+            "replication_method": "FULL_TABLE",
+            "replication_keys": [],
             "path": "reporting_webhooks",
             "data_key": "reporting_webhooks",
             "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Reporting-Webhooks"
@@ -112,6 +113,7 @@
             "name": "snippets",
             "key_properties": ["snippet_name"],
             "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
             "path": "snippets",
             "data_key": "snippets",
             "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Snippets"
@@ -129,6 +131,7 @@
             "name": "collections",
             "key_properties": ["id"],
             "replication_method": "INCREMENTAL",
+            "replication_keys": ["updated_at"],
             "path": "collections",
             "data_key": "collections",
             "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Collections"

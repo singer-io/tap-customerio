@@ -112,10 +112,6 @@ class BaseStream(ABC):
             raw_records = response.get(self.data_key, None)
             if raw_records is None:
                 raw_records = []  # Default to an empty list if None
-            elif isinstance(raw_records, dict):
-                raw_records = list(raw_records.values())  # Convert dict values to list if it's a dict
-            if not isinstance(raw_records, (list, dict)):
-                raw_records = []  # If it's something unexpected, default to an empty list
             next_page = response.get(self.next_page_key)
             self.params[self.next_page_key] = next_page
             yield from raw_records
