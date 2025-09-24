@@ -12,7 +12,7 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
             "transactional": { "updated_at" : "2020-01-01T00:00:00Z"},
             "customers": { "updated_at" : "2020-01-01T00:00:00Z"},
             "campaigns": { "updated_at" : "2020-01-01T00:00:00Z"},
-            "newsletters": { "updated_at" : "2020-01-01T00:00:00Z"},
+            "newsletters": { "updated" : "2020-01-01T00:00:00Z"},
             "segments": { "updated_at" : "2020-01-01T00:00:00Z"},
             "exports": { "updated_at" : "2020-01-01T00:00:00Z"},
         }

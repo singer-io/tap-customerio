@@ -50,7 +50,7 @@
             "name": "newsletters",
             "key_properties": ["id"],
             "replication_method": "INCREMENTAL",
-            "replication_keys": ["updated_at"],
+            "replication_keys": ["updated"],
             "path": "newsletters",
             "data_key": "newsletters",
             "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Newsletters"
