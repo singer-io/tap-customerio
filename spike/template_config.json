@@ -1,7 +1,7 @@
 {
     "tap_name": "customerio",
     "required_config_keys": ["access_token", "start_date"],
-    "page_size": 100,
+    "page_size": 1000,
     "next_page_key": "next",
     "pagination_key": "page",
     "headers": {"Accept": "application/json"},
