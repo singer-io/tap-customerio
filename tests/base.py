@@ -153,7 +153,7 @@ class customerioBaseTest(BaseCase):
                 cls.API_LIMIT: 100
             },
             "eps_suppression": {
-                cls.PRIMARY_KEYS: { "id" },
+                cls.PRIMARY_KEYS: { "email" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,

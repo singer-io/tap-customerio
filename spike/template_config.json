@@ -165,7 +165,7 @@
         },
         {
             "name": "eps_suppression",
-            "key_properties": ["id"],
+            "key_properties": ["email"],
             "replication_method": "FULL_TABLE",
             "replication_keys": [],
             "path": "esp/suppression",
