@@ -54,91 +54,109 @@ This tap:
 **[broadcasts](https://docs.customer.io/integrations/api/app/#operation/listBroadcasts)**
 - Data Key = broadcasts
 - Primary keys: ['id']
+- replication_keys = ["updated"]
 - Replication strategy: INCREMENTAL
 
 **[transactional_messages](https://docs.customer.io/integrations/api/app/#tag/Transactional)**
 - Data Key = messages
 - Primary keys: ['id']
+- replication_keys = ["updated_at"]
 - Replication strategy: INCREMENTAL
 
 **[customers](https://docs.customer.io/integrations/api/app/#tag/Customers)**
 - Data Key = customers
 - Primary keys: ['id']
-- Replication strategy: INCREMENTAL
+- replication_keys = [ ]
+- Replication strategy: FULL_TABLE
 
 **[campaigns](https://docs.customer.io/integrations/api/app/#tag/Campaigns)**
 - Data Key = campaigns
 - Primary keys: ['id']
+- replication_keys = ["updated"]
 - Replication strategy: INCREMENTAL
 
 **[newsletters](https://docs.customer.io/integrations/api/app/#tag/Newsletters)**
 - Data Key = newsletters
 - Primary keys: ['id']
+- replication_keys = ["updated"]
 - Replication strategy: INCREMENTAL
 
 **[segments](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = segments
 - Primary keys: ['id']
+- replication_keys = ["updated_at"
 - Replication strategy: INCREMENTAL
 
 **[messages](https://docs.customer.io/integrations/api/app/#tag/Messages)**
 - Data Key = messages
 - Primary keys: ['id']
+- replication_keys = []
 - Replication strategy: FULL_TABLE
 
 **[exports](https://docs.customer.io/integrations/api/app/#tag/Exports)**
 - Data Key = exports
 - Primary keys: ['id']
+- replication_keys = ["updated_at"]
 - Replication strategy: INCREMENTAL
 
 **[activities](https://docs.customer.io/integrations/api/app/#tag/Activities)**
 - Data Key = activities
 - Primary keys: ['id']
+- replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
 **[sender_identities](https://docs.customer.io/integrations/api/app/#tag/Sender-Identities)**
 - Data Key = sender_identities
 - Primary keys: ['id']
+- replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
 **[reporting_webhooks](https://docs.customer.io/integrations/api/app/#tag/Reporting-Webhooks)**
 - Data Key = reporting_webhooks
 - Primary keys: ['id']
-- Replication strategy: INCREMENTAL
+- replication_keys = [ ]
+- Replication strategy: FULL_TABLE
 
 **[snippets](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = snippets
 - Primary keys: ['snippet_name']
+- replication_keys = ['updated_at']
 - Replication strategy: INCREMENTAL
 
 **[info](https://docs.customer.io/integrations/api/app/#tag/Info)**
 - Data Key = ip_addresses
 - Primary keys: ['id']
+- replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
 **[collections](https://docs.customer.io/integrations/api/app/#tag/Collections)**
 - Data Key = collections
 - Primary keys: ['id']
+- replication_keys = ['updated_at']
 - Replication strategy: INCREMENTAL
 
 **[subscription_center](https://docs.customer.io/integrations/api/app/#tag/Subscription-Center)**
 - Data Key = topics
 - Primary keys: ['id']
+- replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
 **[workspaces](https://docs.customer.io/integrations/api/app/#tag/Workspaces)**
 - Data Key = Workspaces
 - Primary keys: ['id']
+- replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
 **[objects](https://docs.customer.io/integrations/api/app/#tag/Objects)**
 - Data Key = types
 - Primary keys: ['id']
+- replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
 **[eps_suppression](https://docs.customer.io/integrations/api/app/#tag/ESP-Suppression)**
 - Data Key = suppressions
 - Primary keys: ['id']
+- replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
 
