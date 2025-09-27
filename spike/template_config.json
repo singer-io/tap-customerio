@@ -41,7 +41,7 @@
             "name": "campaigns",
             "key_properties": ["id"],
             "replication_method": "INCREMENTAL",
-            "replication_keys": ["updated_at"],
+            "replication_keys": ["updated"],
             "path": "campaigns",
             "data_key": "campaigns",
             "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Campaigns"

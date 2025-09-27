@@ -57,7 +57,7 @@ class customerioBaseTest(BaseCase):
             "campaigns": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
-                cls.REPLICATION_KEYS: { "updated_at" },
+                cls.REPLICATION_KEYS: { "updated" },
                 cls.OBEYS_START_DATE: False,
                 cls.API_LIMIT: 100
             },
