@@ -111,7 +111,7 @@
         },
         {
             "name": "snippets",
-            "key_properties": ["snippet_name"],
+            "key_properties": ["name"],
             "replication_method": "INCREMENTAL",
             "replication_keys": ["updated_at"],
             "path": "snippets",
@@ -120,7 +120,7 @@
         },
         {
             "name": "info",
-            "key_properties": ["id"],
+            "key_properties": ["ip_addresses"],
             "replication_method": "FULL_TABLE",
             "replication_keys": [],
             "path": "info/ip_addresses",
