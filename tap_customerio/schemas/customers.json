@@ -13,210 +13,210 @@
                 "type": [
                   "null",
                   "string"
-                ],
-                "attributes": {
+                ]
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "_last_emailed": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "created_at": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "email": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "title": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "department": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "cio_id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "cio_subscription_preferences": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "_cio_subscription_preferences_computed": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  }
+                }
+              },
+              "timestamps": {
+                "type": "object",
+                "properties": {
+                  "cio_id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "_last_emailed": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "created_at": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "email": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "department": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "title": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  },
+                  "_cio_subscription_preferences_computed": {
+                    "type": [
+                      "null",
+                      "integer"
+                    ]
+                  },
+                  "cio_subscription_preferences": {
+                    "type": [
+                      "null",
+                      "string"
+                    ],
+                    "format": "date-time"
+                  }
+                }
+              },
+              "unsubscribed": {
+                "type": [
+                  "null",
+                  "boolean"
+                ]
+              },
+              "devices": {
+                "type": "array",
+                "items": {
                   "type": "object",
                   "properties": {
-                    "_last_emailed": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "created_at": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "email": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "title": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "department": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
                     "id": {
                       "type": [
                         "null",
                         "string"
                       ]
                     },
-                    "cio_id": {
+                    "last_used": {
+                      "type": [
+                        "null",
+                        "string"
+                      ],
+                      "format": "date-time"
+                    },
+                    "platform": {
                       "type": [
                         "null",
                         "string"
                       ]
                     },
-                    "cio_subscription_preferences": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "_cio_subscription_preferences_computed": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    }
-                  }
-                },
-                "timestamps": {
-                  "type": "object",
-                  "properties": {
-                    "cio_id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "_last_emailed": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "created_at": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "email": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "department": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "title": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "_cio_subscription_preferences_computed": {
-                      "type": [
-                        "null",
-                        "integer"
-                      ]
-                    },
-                    "cio_subscription_preferences": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    }
-                  }
-                },
-                "unsubscribed": {
-                  "type": [
-                    "null",
-                    "boolean"
-                  ]
-                },
-                "devices": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "id": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
-                      },
-                      "last_used": {
-                        "type": [
-                          "null",
-                          "string"
-                        ],
-                        "format": "date-time"
-                      },
-                      "platform": {
-                        "type": [
-                          "null",
-                          "string"
-                        ]
-                      },
-                      "attributes": {
-                        "type": "object",
-                        "properties": {
-                          "device_os": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
-                          },
-                          "device_model": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
-                          },
-                          "app_version": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
-                          },
-                          "cio_sdk_version": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
-                          },
-                          "_last_status": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
-                          },
-                          "device_locale": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
-                          },
-                          "push_enabled": {
-                            "type": [
-                              "null",
-                              "string"
-                            ]
-                          }
+                    "attributes": {
+                      "type": "object",
+                      "properties": {
+                        "device_os": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "device_model": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "app_version": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "cio_sdk_version": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "_last_status": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "device_locale": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
+                        },
+                        "push_enabled": {
+                          "type": [
+                            "null",
+                            "string"
+                          ]
                         }
                       }
                     }
@@ -229,3 +229,4 @@
       }
     }
   }
+}
