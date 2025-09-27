@@ -119,7 +119,7 @@ This tap:
 
 **[snippets](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = snippets
-- Primary keys: ['snippet_name']
+- Primary keys: ['name']
 - replication_keys = ['updated_at']
 - Replication strategy: INCREMENTAL
 
