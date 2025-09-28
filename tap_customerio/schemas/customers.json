@@ -1,234 +1,168 @@
 {
   "type": "object",
   "properties": {
-    "customers": {
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "_last_emailed": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "department": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cio_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cio_subscription_preferences": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "_cio_subscription_preferences_computed": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "timestamps": {
+      "type": "object",
+      "properties": {
+        "cio_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "_last_emailed": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "department": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "_cio_subscription_preferences_computed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "cio_subscription_preferences": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "unsubscribed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "devices": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "customer": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": [
-                  "null",
-                  "string"
-                ]
-              },
-              "attributes": {
-                "type": "object",
-                "properties": {
-                  "_last_emailed": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "created_at": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "email": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  },
-                  "title": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  },
-                  "department": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  },
-                  "id": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  },
-                  "cio_id": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  },
-                  "cio_subscription_preferences": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  },
-                  "_cio_subscription_preferences_computed": {
-                    "type": [
-                      "null",
-                      "string"
-                    ]
-                  }
-                }
-              },
-              "timestamps": {
-                "type": "object",
-                "properties": {
-                  "cio_id": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "_last_emailed": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "created_at": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "email": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "id": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "department": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "title": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  },
-                  "_cio_subscription_preferences_computed": {
-                    "type": [
-                      "null",
-                      "integer"
-                    ]
-                  },
-                  "cio_subscription_preferences": {
-                    "type": [
-                      "null",
-                      "string"
-                    ],
-                    "format": "date-time"
-                  }
-                }
-              },
-              "unsubscribed": {
-                "type": [
-                  "null",
-                  "boolean"
-                ]
-              },
-              "devices": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "id": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "last_used": {
-                      "type": [
-                        "null",
-                        "string"
-                      ],
-                      "format": "date-time"
-                    },
-                    "platform": {
-                      "type": [
-                        "null",
-                        "string"
-                      ]
-                    },
-                    "attributes": {
-                      "type": "object",
-                      "properties": {
-                        "device_os": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
-                        },
-                        "device_model": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
-                        },
-                        "app_version": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
-                        },
-                        "cio_sdk_version": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
-                        },
-                        "_last_status": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
-                        },
-                        "device_locale": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
-                        },
-                        "push_enabled": {
-                          "type": [
-                            "null",
-                            "string"
-                          ]
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "last_used": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "platform": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         }
       }
     }
   }
 }
-
-
