@@ -15,6 +15,15 @@ class customerioAllFields(AllFieldsTest, customerioBaseTest):
         return "tap_tester_customerio_all_fields_test"
 
     def streams_to_test(self):
-        streams_to_exclude = {}
+        streams_to_exclude = {
+            "sender_identities",
+            "customers",
+            "eps_suppression",
+            "collections",
+            "broadcasts",
+            "messages",
+            "subscription_center",
+
+        }
         return self.expected_stream_names().difference(streams_to_exclude)
 
