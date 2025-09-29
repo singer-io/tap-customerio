@@ -119,13 +119,13 @@ This tap:
 
 **[snippets](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = snippets
-- Primary keys: ['snippet_name']
+- Primary keys: ['name']
 - replication_keys = ['updated_at']
 - Replication strategy: INCREMENTAL
 
 **[info](https://docs.customer.io/integrations/api/app/#tag/Info)**
 - Data Key = ip_addresses
-- Primary keys: ['id']
+- Primary keys: ['ip_addresses']
 - replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
@@ -155,7 +155,7 @@ This tap:
 
 **[eps_suppression](https://docs.customer.io/integrations/api/app/#tag/ESP-Suppression)**
 - Data Key = suppressions
-- Primary keys: ['id']
+- Primary keys: ['email']
 - replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 

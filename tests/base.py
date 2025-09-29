@@ -38,126 +38,126 @@ class customerioBaseTest(BaseCase):
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "transactional_messages": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "customers": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "campaigns": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
-                cls.REPLICATION_KEYS: { "updated_at" },
+                cls.REPLICATION_KEYS: { "updated" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "newsletters": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "segments": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "messages": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "exports": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "activities": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "sender_identities": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "reporting_webhooks": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "snippets": {
-                cls.PRIMARY_KEYS: { "snippet_name" },
+                cls.PRIMARY_KEYS: { "name" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "info": {
-                cls.PRIMARY_KEYS: { "id" },
+                cls.PRIMARY_KEYS: { "ip_addresses" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "collections": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "subscription_center": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "workspaces": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "objects": {
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             },
             "eps_suppression": {
-                cls.PRIMARY_KEYS: { "id" },
+                cls.PRIMARY_KEYS: { "email" },
                 cls.REPLICATION_METHOD: cls.FULL_TABLE,
                 cls.REPLICATION_KEYS: set(),
                 cls.OBEYS_START_DATE: False,
-                cls.API_LIMIT: 100
+                cls.API_LIMIT: 1
             }
         }
 

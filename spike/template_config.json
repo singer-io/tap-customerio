@@ -41,7 +41,7 @@
             "name": "campaigns",
             "key_properties": ["id"],
             "replication_method": "INCREMENTAL",
-            "replication_keys": ["updated_at"],
+            "replication_keys": ["updated"],
             "path": "campaigns",
             "data_key": "campaigns",
             "doc_link": "https://docs.customer.io/integrations/api/app/#tag/Campaigns"
@@ -111,7 +111,7 @@
         },
         {
             "name": "snippets",
-            "key_properties": ["snippet_name"],
+            "key_properties": ["name"],
             "replication_method": "INCREMENTAL",
             "replication_keys": ["updated_at"],
             "path": "snippets",
@@ -120,7 +120,7 @@
         },
         {
             "name": "info",
-            "key_properties": ["id"],
+            "key_properties": ["ip_addresses"],
             "replication_method": "FULL_TABLE",
             "replication_keys": [],
             "path": "info/ip_addresses",
@@ -165,7 +165,7 @@
         },
         {
             "name": "eps_suppression",
-            "key_properties": ["id"],
+            "key_properties": ["email"],
             "replication_method": "FULL_TABLE",
             "replication_keys": [],
             "path": "esp/suppression",
