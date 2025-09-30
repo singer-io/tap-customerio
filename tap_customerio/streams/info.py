@@ -4,7 +4,7 @@ from tap_customerio.streams.abstracts import FullTableStream
 
 class Info(FullTableStream):
     tap_stream_id = "info"
-    key_properties = ["id"]
+    key_properties = ["ip_addresses"]
     replication_method = "FULL_TABLE"
     replication_keys = []
     data_key = "ip_addresses"

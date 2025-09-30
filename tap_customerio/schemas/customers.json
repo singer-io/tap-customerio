@@ -1,65 +1,168 @@
 {
-    "type": "object",
-    "properties": {
-        "cio_id": {
-            "type": [
-                "null",
-                "integer"
-            ]
-        },
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
         "_last_emailed": {
-            "type": [
-                "null",
-                "string"
-            ],
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ],
           "format": "date-time"
         },
         "email": {
-            "type": [
-                "null",
-                "integer"
-            ]
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "department": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "id": {
-            "type": [
-                "null",
-                "integer"
-            ]
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "unsubscribed": {
-            "type": [
-                "null",
-                "boolean"
-            ]
-        },
-        "_cio_subscription_preferences_computed": {
-            "type": [
-                "null",
-                "integer"
-            ]
+        "cio_id": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "cio_subscription_preferences": {
-            "type": [
-                "null",
-                "integer"
-            ]
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "additionalProperties": {
-            "type": "object",
-            "properties": {
-                "x-additionalPropertiesName": {
-                    "type": [
-                        "null",
-                        "string"
-                    ]
-                },
-                "description": {
-                    "type": [
-                        "null",
-                        "string"
-                    ]
-                }
-            }
+        "_cio_subscription_preferences_computed": {
+          "type": [
+            "string",
+            "null"
+          ]
         }
+      }
+    },
+    "timestamps": {
+      "type": "object",
+      "properties": {
+        "cio_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "_last_emailed": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "department": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "title": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "_cio_subscription_preferences_computed": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "cio_subscription_preferences": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "unsubscribed": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "devices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "last_used": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "platform": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
     }
+  }
 }

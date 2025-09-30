@@ -4,7 +4,7 @@ class Broadcasts(IncrementalStream):
     tap_stream_id = "broadcasts"
     key_properties = ["id"]
     replication_method = "INCREMENTAL"
-    replication_keys = ["updated_at"]
+    replication_keys = ["updated"]
     data_key = "broadcasts"
     path = "broadcasts"
 

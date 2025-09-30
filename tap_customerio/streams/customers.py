@@ -1,10 +1,10 @@
-from tap_customerio.streams.abstracts import IncrementalStream
+from tap_customerio.streams.abstracts import FullTableStream
 
-class Customers(IncrementalStream):
+class Customers(FullTableStream):
     tap_stream_id = "customers"
     key_properties = ["id"]
-    replication_method = "INCREMENTAL"
-    replication_keys = ["updated_at"]
+    replication_method = "FULL_TABLE"
+    replication_keys = []
     data_key = "customers"
     path = "customers/attributes"
     http_method = "POST"
