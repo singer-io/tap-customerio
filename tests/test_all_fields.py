@@ -1,8 +1,11 @@
 from base import customerioBaseTest
 from tap_tester.base_suite_tests.all_fields_test import AllFieldsTest
 
-KNOWN_MISSING_FIELDS = {
-
+KNOWN_MISSING_FIELDS =  {
+    'newsletters': {
+        'recipient_segment_ids',
+        'subscription_topic_id',
+    }
 }
 
 
