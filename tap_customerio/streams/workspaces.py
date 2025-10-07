@@ -5,5 +5,5 @@ class Workspaces(FullTableStream):
     key_properties = ["id"]
     replication_method = "FULL_TABLE"
     replication_keys = []
-    data_key = "Workspaces"
-    path = "Workspaces"
+    data_key = "workspaces"
+    path = "workspaces"

@@ -71,7 +71,7 @@ class TestClient(unittest.TestCase):
     @patch("tap_customerio.client.Client._Client__make_request")
     def test_client_get(self, mock_make_request):
         mock_make_request.return_value = {"data": "ok"}
-        result = self.client.get("https://api.example.com/resource")
+        result = self.client.make_request("GET", "https://api.example.com/resource")
         assert result == {"data": "ok"}
         mock_make_request.assert_called_once()
 
@@ -79,7 +79,7 @@ class TestClient(unittest.TestCase):
     @patch("tap_customerio.client.Client._Client__make_request")
     def test_client_post(self, mock_make_request):
         mock_make_request.return_value = {"created": True}
-        result = self.client.post("https://api.example.com/resource", body={"key": "value"})
+        result = self.client.make_request("POST", "https://api.example.com/resource", body={"key": "value"})
         assert result == {"created": True}
         mock_make_request.assert_called_once()
 

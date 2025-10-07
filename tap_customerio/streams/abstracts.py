@@ -28,14 +28,14 @@ class BaseStream(ABC):
 
     url_endpoint = ""
     path = ""
-    page_size = 100
+    page_size = 1000
     next_page_key = "next"
     headers = {'Accept': 'application/json'}
     children = []
     parent = ""
     data_key = ""
     parent_bookmark_key = ""
-    http_method = "POST"
+    http_method = "GET"
 
     def __init__(self, client=None, catalog=None) -> None:
         self.client = client
@@ -96,11 +96,10 @@ class BaseStream(ABC):
          - https://github.com/singer-io/getting-started/blob/master/docs/SYNC_MODE.md
         """
 
-
     def get_records(self) -> Iterator:
-        """Interacts with api client interaction and pagination."""
+        """Interacts with API client and handles pagination."""
         self.params["page"] = self.page_size
-        next_page = 1
+        next_page = 1  # Start from page 1
         while next_page:
             response = self.client.make_request(
                 self.http_method,
@@ -110,9 +109,10 @@ class BaseStream(ABC):
                 body=json.dumps(self.data_payload),
                 path=self.path
             )
-            raw_records = response.get(self.data_key, [])
+            raw_records = response.get(self.data_key, None)
+            if raw_records is None:
+                raw_records = []  # Default to an empty list if None
             next_page = response.get(self.next_page_key)
-
             self.params[self.next_page_key] = next_page
             yield from raw_records
 
@@ -230,9 +230,10 @@ class FullTableStream(BaseStream):
     ) -> Dict:
         """Abstract implementation for `type: Fulltable` stream."""
         self.url_endpoint = self.get_url_endpoint(parent_obj)
-        self.update_data_payload(parent_obj)
+        self.update_data_payload(parent_obj=parent_obj)
         with metrics.record_counter(self.tap_stream_id) as counter:
             for record in self.get_records():
+                record = self.modify_object(record, parent_obj)
                 transformed_record = transformer.transform(
                     record, self.schema, self.metadata
                 )
@@ -288,6 +289,10 @@ class ParentBaseStream(IncrementalStream):
 
 class ChildBaseStream(IncrementalStream):
     """Base Class for Child Stream."""
+
+    def __init__(self, client=None, catalog=None):
+        super().__init__(client, catalog)
+        self.bookmark_value = None
 
     def get_url_endpoint(self, parent_obj=None):
         """Prepare URL endpoint for child streams."""

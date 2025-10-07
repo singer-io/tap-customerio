@@ -19,11 +19,10 @@ class customerioInterruptedSyncTest(customerioBaseTest):
         return {
             "currently_syncing": "prospects",
             "bookmarks": {
-                "broadcasts": { "updated_at" : "2020-01-01T00:00:00Z"},
+                "broadcasts": { "updated" : "2020-01-01T00:00:00Z"},
                 "transactional_messages": { "updated_at" : "2020-01-01T00:00:00Z"},
-                "customers": { "updated_at" : "2020-01-01T00:00:00Z"},
-                "campaigns": { "updated_at" : "2020-01-01T00:00:00Z"},
-                "newsletters": { "updated_at" : "2020-01-01T00:00:00Z"},
+                "campaigns": { "updated" : "2020-01-01T00:00:00Z"},
+                "newsletters": { "updated" : "2020-01-01T00:00:00Z"},
                 "segments": { "updated_at" : "2020-01-01T00:00:00Z"},
                 "exports": { "updated_at" : "2020-01-01T00:00:00Z"},
         }
