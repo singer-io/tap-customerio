@@ -84,7 +84,7 @@ This tap:
 **[segments](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = segments
 - Primary keys: ['id']
-- replication_keys = ["updated_at"
+- replication_keys = ["updated_at"]
 - Replication strategy: INCREMENTAL
 
 **[messages](https://docs.customer.io/integrations/api/app/#tag/Messages)**
