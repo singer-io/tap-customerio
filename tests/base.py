@@ -65,7 +65,7 @@ class customerioBaseTest(BaseCase):
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated" },
-                cls.OBEYS_START_DATE: False,
+                cls.OBEYS_START_DATE: True,
                 cls.API_LIMIT: 1
             },
             "segments": {
@@ -114,7 +114,7 @@ class customerioBaseTest(BaseCase):
                 cls.PRIMARY_KEYS: { "name" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },
-                cls.OBEYS_START_DATE: False,
+                cls.OBEYS_START_DATE: True,
                 cls.API_LIMIT: 1
             },
             "info": {
@@ -174,12 +174,7 @@ class customerioBaseTest(BaseCase):
 
     def get_properties(self, original: bool = True):
         """Configuration of properties required for the tap."""
-        return_value = {
-            "start_date": "2022-07-01T00:00:00Z"
+        return {
+            "start_date" : self.start_date
         }
-        if original:
-            return return_value
-
-        return_value["start_date"] = self.start_date
-        return return_value
 

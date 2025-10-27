@@ -289,6 +289,9 @@ class ParentBaseStream(IncrementalStream):
 
 class ChildBaseStream(IncrementalStream):
     """Base Class for Child Stream."""
+    def __init__(self, client=None, catalog=None) -> None:
+        super().__init__(client, catalog)
+        self.bookmark_value = None
 
     def __init__(self, client=None, catalog=None):
         super().__init__(client, catalog)

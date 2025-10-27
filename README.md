@@ -84,7 +84,7 @@ This tap:
 **[segments](https://docs.customer.io/integrations/api/app/#tag/Snippets)**
 - Data Key = segments
 - Primary keys: ['id']
-- replication_keys = ["updated_at"]
+- replication_keys = ["updated_at"
 - Replication strategy: INCREMENTAL
 
 **[messages](https://docs.customer.io/integrations/api/app/#tag/Messages)**
@@ -125,7 +125,7 @@ This tap:
 
 **[info](https://docs.customer.io/integrations/api/app/#tag/Info)**
 - Data Key = ip_addresses
-- Primary keys: ['ip_addresses']
+- Primary keys: ['id']
 - replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 
@@ -155,7 +155,7 @@ This tap:
 
 **[eps_suppression](https://docs.customer.io/integrations/api/app/#tag/ESP-Suppression)**
 - Data Key = suppressions
-- Primary keys: ['email']
+- Primary keys: ['id']
 - replication_keys = [ ]
 - Replication strategy: FULL_TABLE
 

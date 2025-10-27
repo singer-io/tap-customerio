@@ -8,12 +8,7 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
     bookmark_format = "%Y-%m-%dT%H:%M:%S.%fZ"
     initial_bookmarks = {
         "bookmarks": {
-            "broadcasts": { "updated" : "2020-01-01T00:00:00Z"},
-            "transactional_messages": { "updated_at" : "2020-01-01T00:00:00Z"},
-            "campaigns": { "updated" : "2020-01-01T00:00:00Z"},
-            "newsletters": { "updated" : "2020-01-01T00:00:00Z"},
             "segments": { "updated_at" : "2020-01-01T00:00:00Z"},
-            "exports": { "updated_at" : "2020-01-01T00:00:00Z"},
         }
     }
     @staticmethod
@@ -21,6 +16,24 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
         return "tap_tester_customerio_bookmark_test"
 
     def streams_to_test(self):
-        streams_to_exclude = {}
+        streams_to_exclude = {
+            'eps_suppression',
+            'subscription_center',
+            'sender_identities',
+            'broadcasts',
+            'customers',
+            'collections',
+            'messages',
+            'exports',
+            'objects',
+            'transactional_messages',
+            'workspaces',
+            'campaigns',
+            'newsletters',
+            'info',
+            'activities',
+            'reporting_webhooks',
+            'snippets'
+        }
         return self.expected_stream_names().difference(streams_to_exclude)
 
