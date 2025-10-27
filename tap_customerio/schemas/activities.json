@@ -14,7 +14,7 @@
             ]
         },
         "customer_identifiers": {
-            "type": "object",
+            "type": ["null", "object"],
             "properties": {
                 "cio_id": {
                     "type": [
