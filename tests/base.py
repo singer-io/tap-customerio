@@ -65,7 +65,7 @@ class customerioBaseTest(BaseCase):
                 cls.PRIMARY_KEYS: { "id" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated" },
-                cls.OBEYS_START_DATE: False,
+                cls.OBEYS_START_DATE: True,
                 cls.API_LIMIT: 1
             },
             "segments": {
@@ -114,7 +114,7 @@ class customerioBaseTest(BaseCase):
                 cls.PRIMARY_KEYS: { "name" },
                 cls.REPLICATION_METHOD: cls.INCREMENTAL,
                 cls.REPLICATION_KEYS: { "updated_at" },
-                cls.OBEYS_START_DATE: False,
+                cls.OBEYS_START_DATE: True,
                 cls.API_LIMIT: 1
             },
             "info": {
