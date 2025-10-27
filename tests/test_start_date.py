@@ -14,8 +14,8 @@ class customerioStartDateTest(StartDateTest, customerioBaseTest):
     def streams_to_test(self):
         streams_to_exclude = {
             'customers',
-            'messages'
-            'activities'
+            'messages',
+            'activities',
             'sender_identities',
             'reporting_webhooks',
             'info',
