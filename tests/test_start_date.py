@@ -34,5 +34,5 @@ class customerioStartDateTest(StartDateTest, customerioBaseTest):
         return "2015-03-25T00:00:00Z"
     @property
     def start_date_2(self):
-        return "2025-10-27T00:00:00Z"
+        return "2025-10-26T00:00:00Z"
 
