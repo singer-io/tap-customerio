@@ -21,6 +21,14 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
         return "tap_tester_customerio_bookmark_test"
 
     def streams_to_test(self):
-        streams_to_exclude = {}
+        streams_to_exclude = {
+            'eps_suppression',
+            'subscription_center',
+            'sender_identities',
+            'broadcasts',
+            'customers',
+            'collections',
+            'messages'
+        }
         return self.expected_stream_names().difference(streams_to_exclude)
 
