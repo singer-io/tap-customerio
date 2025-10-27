@@ -28,7 +28,11 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
             'broadcasts',
             'customers',
             'collections',
-            'messages'
+            'messages',
+            'exports'
+            'objects'
+            'workspaces'
+            'snippets'
         }
         return self.expected_stream_names().difference(streams_to_exclude)
 
