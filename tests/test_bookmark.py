@@ -33,7 +33,6 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
             'info',
             'activities',
             'reporting_webhooks',
-            'segments',
             'snippets'
         }
         return self.expected_stream_names().difference(streams_to_exclude)
