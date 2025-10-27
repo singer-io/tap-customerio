@@ -13,13 +13,19 @@ class customerioStartDateTest(StartDateTest, customerioBaseTest):
 
     def streams_to_test(self):
         streams_to_exclude = {
-            'eps_suppression',
-            'subscription_center',
-            'sender_identities',
-            'broadcasts',
             'customers',
-            'collections',
             'messages'
+            'activities'
+            'sender_identities',
+            'reporting_webhooks',
+            'info',
+            'subscription_center',
+            'workspaces',
+            'objects',
+            'eps_suppression',
+            'broadcasts',
+            'collections',
+
         }
         return self.expected_stream_names().difference(streams_to_exclude)
 
