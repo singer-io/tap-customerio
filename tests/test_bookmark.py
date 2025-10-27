@@ -8,9 +8,6 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
     bookmark_format = "%Y-%m-%dT%H:%M:%S.%fZ"
     initial_bookmarks = {
         "bookmarks": {
-            "transactional_messages": { "updated_at" : "2020-01-01T00:00:00Z"},
-            "campaigns": { "updated" : "2020-01-01T00:00:00Z"},
-            "newsletters": { "updated" : "2020-01-01T00:00:00Z"},
             "segments": { "updated_at" : "2020-01-01T00:00:00Z"},
         }
     }
@@ -29,10 +26,13 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
             'messages',
             'exports',
             'objects',
+            'transactional_messages',
             'workspaces',
+            'campaigns',
             'info',
             'activities',
             'reporting_webhooks',
+            'segments',
             'snippets'
         }
         return self.expected_stream_names().difference(streams_to_exclude)
