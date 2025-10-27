@@ -18,6 +18,9 @@ class customerioPaginationTest(PaginationTest, customerioBaseTest):
             'broadcasts',
             'customers',
             'collections',
+            'exports',
+            'objects',
+            'collections',
             'messages'
         }
         return self.expected_stream_names().difference(streams_to_exclude)
