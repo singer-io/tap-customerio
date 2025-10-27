@@ -1,12 +1,7 @@
 from base import customerioBaseTest
 from tap_tester.base_suite_tests.all_fields_test import AllFieldsTest
 
-KNOWN_MISSING_FIELDS =  {
-    'newsletters': {
-        'recipient_segment_ids',
-        'subscription_topic_id',
-    }
-}
+KNOWN_MISSING_FIELDS =  {}
 
 
 class customerioAllFields(AllFieldsTest, customerioBaseTest):
@@ -25,7 +20,8 @@ class customerioAllFields(AllFieldsTest, customerioBaseTest):
             'broadcasts',
             'customers',
             'collections',
-            'messages'
+            'messages',
+            'newsletters'
         }
         return self.expected_stream_names().difference(streams_to_exclude)
 
