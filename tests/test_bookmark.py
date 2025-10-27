@@ -29,6 +29,7 @@ class customerioBookMarkTest(BookmarkTest, customerioBaseTest):
             'transactional_messages',
             'workspaces',
             'campaigns',
+            'newsletters',
             'info',
             'activities',
             'reporting_webhooks',
