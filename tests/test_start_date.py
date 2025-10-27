@@ -25,6 +25,8 @@ class customerioStartDateTest(StartDateTest, customerioBaseTest):
             'eps_suppression',
             'broadcasts',
             'collections',
+            'newsletters',
+            'exports',
 
         }
         return self.expected_stream_names().difference(streams_to_exclude)
