@@ -293,6 +293,10 @@ class ChildBaseStream(IncrementalStream):
         super().__init__(client, catalog)
         self.bookmark_value = None
 
+    def __init__(self, client=None, catalog=None):
+        super().__init__(client, catalog)
+        self.bookmark_value = None
+
     def get_url_endpoint(self, parent_obj=None):
         """Prepare URL endpoint for child streams."""
         return f"{self.client.base_url}/{self.path.format(parent_obj['id'])}"

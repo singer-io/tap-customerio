@@ -64,7 +64,7 @@ class Client:
 
     def authenticate(self, headers: Dict, params: Dict) -> Tuple[Dict, Dict]:
         """Authenticates the request with the token"""
-        headers["Authorization"] = self.config["access_token"]
+        headers = {'Authorization': 'Bearer {}'.format(self.config['access_token'])}
         return headers, params
 
     def make_request(
