@@ -1,0 +1,27 @@
+from tap_tester.base_suite_tests.pagination_test import PaginationTest
+from base import customerioBaseTest
+
+class customerioPaginationTest(PaginationTest, customerioBaseTest):
+    """
+    Ensure tap can replicate multiple pages of data for streams that use pagination.
+    """
+
+    @staticmethod
+    def name():
+        return "tap_tester_customerio_pagination_test"
+
+    def streams_to_test(self):
+        streams_to_exclude = {
+            'eps_suppression',
+            'subscription_center',
+            'sender_identities',
+            'broadcasts',
+            'customers',
+            'collections',
+            'exports',
+            'objects',
+            'collections',
+            'messages'
+        }
+        return self.expected_stream_names().difference(streams_to_exclude)
+
