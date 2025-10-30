@@ -138,7 +138,7 @@
       ]
     },
     "devices": {
-      "type": "array",
+      "type": ["null", "array"],
       "items": {
         "type": ["null", "object"],
         "properties": {
