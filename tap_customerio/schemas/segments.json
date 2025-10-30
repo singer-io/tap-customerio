@@ -1,5 +1,5 @@
 {
-    "type": "object",
+    "type": ["null", "object"],
     "properties": {
         "id": {
             "type": [
@@ -56,7 +56,7 @@
             }
         },
         "conditions": {
-            "type": "object",
+            "type": ["null", "object"],
             "properties": {
                 "and": {
                     "type": [
@@ -64,13 +64,13 @@
                         "array"
                     ],
                     "items": {
-                        "type": "object",
+                        "type": ["null", "object"],
                         "properties": {
                             "event": {
-                                "type": "object",
+                                "type": ["null", "object"],
                                 "properties": {
                                     "filters": {
-                                        "type": "object",
+                                        "type": ["null", "object"],
                                         "properties": {
                                             "and": {
                                                 "type": [
@@ -78,7 +78,7 @@
                                                     "array"
                                                 ],
                                                 "items": {
-                                                    "type": "object",
+                                                    "type": ["null", "object"],
                                                     "properties": {
                                                         "field": {
                                                             "type": [

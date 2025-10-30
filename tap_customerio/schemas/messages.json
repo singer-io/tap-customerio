@@ -1,5 +1,5 @@
 {
-    "type": "object",
+    "type": ["null", "object"],
     "properties": {
         "id": {
             "type": [
@@ -26,7 +26,7 @@
             ]
         },
         "customer_identifiers": {
-            "type": "object",
+            "type": ["null", "object"],
             "properties": {
                 "email": {
                     "type": [
@@ -61,7 +61,7 @@
             ]
         },
         "metrics": {
-            "type": "object",
+            "type": ["null", "object"],
             "properties": {
                 "bounced": {
                     "type": [

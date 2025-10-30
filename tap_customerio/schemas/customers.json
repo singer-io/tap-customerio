@@ -1,5 +1,5 @@
 {
-  "type": "object",
+  "type": ["null", "object"],
   "properties": {
     "id": {
       "type": [
@@ -8,7 +8,7 @@
       ]
     },
     "attributes": {
-      "type": "object",
+      "type": ["null", "object"],
       "properties": {
         "_last_emailed": {
           "type": [
@@ -69,7 +69,7 @@
       }
     },
     "timestamps": {
-      "type": "object",
+      "type": ["null", "object"],
       "properties": {
         "cio_id": {
           "type": [
@@ -140,7 +140,7 @@
     "devices": {
       "type": "array",
       "items": {
-        "type": "object",
+        "type": ["null", "object"],
         "properties": {
           "id": {
             "type": [

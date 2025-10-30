@@ -1,5 +1,5 @@
 {
-    "type": "object",
+    "type": ["null", "object"],
     "properties": {
         "id": {
             "type": [
@@ -50,7 +50,7 @@
             "format": "date-time"
         },
         "data": {
-            "type": "object",
+            "type": ["null", "object"],
             "properties": {
                 "entered": {
                     "type": [
