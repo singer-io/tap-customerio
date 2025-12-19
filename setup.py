@@ -16,7 +16,7 @@ setup(name="tap-customerio",
         "backoff==2.2.1",
         "parameterized"
       ],
-      extras_require={"dev": ["pylint", "ipdb", "pytest"]},
+      extras_require={"dev": ["pylint", "ipdb", "pytest", "coverage"]},
       entry_points="""
           [console_scripts]
           tap-customerio=tap_customerio:main

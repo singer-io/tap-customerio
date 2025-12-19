@@ -11,7 +11,7 @@ jobs:
             uv venv --python 3.9 /usr/local/share/virtualenvs/tap-customerio
             source /usr/local/share/virtualenvs/tap-customerio/bin/activate
             uv pip install -U setuptools
-            uv pip install .
+            uv pip install .[dev]
       - run:
           name: "JSON Validator"
           command: |
@@ -21,13 +21,11 @@ jobs:
           name: "pylint"
           command: |
             source /usr/local/share/virtualenvs/tap-customerio/bin/activate
-            uv pip install pylint
             pylint tap_customerio -d C,R,W
       - run:
           name: "Unit Tests"
           command: |
             source /usr/local/share/virtualenvs/tap-customerio/bin/activate
-            uv pip install pytest coverage
             coverage run -m pytest tests/unittests
             coverage html
       - store_test_results:
