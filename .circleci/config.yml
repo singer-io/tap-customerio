@@ -8,10 +8,10 @@ jobs:
       - run:
           name: "Setup virtual env"
           command: |
-            python3 -mvenv /usr/local/share/virtualenvs/tap-customerio
+            uv venv --python 3.9 /usr/local/share/virtualenvs/tap-customerio
             source /usr/local/share/virtualenvs/tap-customerio/bin/activate
-            pip install -U "pip==22.2.2" "setuptools==65.3.0"
-            pip install .[dev]
+            uv pip install -U setuptools
+            uv pip install .
       - run:
           name: "JSON Validator"
           command: |
@@ -21,20 +21,20 @@ jobs:
           name: "pylint"
           command: |
             source /usr/local/share/virtualenvs/tap-customerio/bin/activate
-            pip install pylint
+            uv pip install pylint
             pylint tap_customerio -d C,R,W
-      - add_ssh_keys
       - run:
           name: "Unit Tests"
           command: |
             source /usr/local/share/virtualenvs/tap-customerio/bin/activate
-            pip install nose coverage
-            nosetests --with-coverage --cover-erase --cover-package=tap_customerio --cover-html-dir=htmlcov tests/unittests
+            uv pip install pytest coverage
+            coverage run -m pytest tests/unittests
             coverage html
       - store_test_results:
           path: test_output/report.xml
       - store_artifacts:
           path: htmlcov
+
       # - run:
       #     name: "Integration Tests"
       #     command: |
