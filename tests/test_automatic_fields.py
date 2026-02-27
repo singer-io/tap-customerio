@@ -20,7 +20,12 @@ class customerioAutomaticFields(MinimumSelectionTest, customerioBaseTest):
             'broadcasts',
             'customers',
             'collections',
-            'messages'
+            'messages',
+            'newsletters',
+            # No records exist in the sandbox environment for these streams
+            'exports',
+            'objects',
+            'reporting_webhooks',
         }
         return self.expected_stream_names().difference(streams_to_exclude)
 

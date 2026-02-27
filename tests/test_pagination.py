@@ -20,8 +20,12 @@ class customerioPaginationTest(PaginationTest, customerioBaseTest):
             'collections',
             'exports',
             'objects',
-            'collections',
-            'messages'
+            'messages',
+            # Sandbox has 0 or 1 records — cannot exceed page limit
+            'newsletters',
+            'reporting_webhooks',
+            'workspaces',
+            'campaigns',
         }
         return self.expected_stream_names().difference(streams_to_exclude)
 
