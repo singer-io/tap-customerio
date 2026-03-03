@@ -58,7 +58,7 @@ class customerioStartDateTest(StartDateTest, customerioBaseTest):
                 record_count_sync_1 = _SDT.record_count_by_stream_1.get(stream, 0)
                 record_count_sync_2 = _SDT.record_count_by_stream_2.get(stream, 0)
 
-                assert len(self.expected_replication_keys().get(stream)) == 1
+                self.assertEqual(1, len(self.expected_replication_keys().get(stream)))
                 expected_replication_key = next(
                     iter(self.expected_replication_keys().get(stream)))
 
