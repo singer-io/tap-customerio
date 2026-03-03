@@ -13,7 +13,9 @@ class customerioInterruptedSyncTest(InterruptedSyncTest, customerioBaseTest):
 
     def streams_to_test(self):
         # Only INCREMENTAL streams that produce records in the sandbox.
-        return {'segments', 'transactional_messages', 'campaigns'}
+        # Return streams in deterministic order to match the actual tap sync order:
+        # campaigns → segments → transactional_messages
+        return ['campaigns', 'segments', 'transactional_messages']
 
     def manipulate_state(self):
         # Actual tap sync order is: campaigns → segments → transactional_messages
