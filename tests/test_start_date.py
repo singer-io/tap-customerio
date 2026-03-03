@@ -66,15 +66,20 @@ class customerioStartDateTest(StartDateTest, customerioBaseTest):
                     record['data'].get(expected_replication_key)
                     for record in _SDT.synced_messages_by_stream_1.get(
                         stream, {}).get('messages', [])
-                    if record.get('action') == 'upsert'}
+                    if record.get('action') == 'upsert'
+                    and record['data'].get(expected_replication_key)}
 
-                primary_keys_sync_2 = {
-                    tuple(message['data'][pk] for pk in expected_primary_keys)
-                    for message in _SDT.synced_messages_by_stream_2.get(
-                        stream, {}).get('messages', [])
-                    if message.get('action') == 'upsert'
-                    and self.parse_date(message['data'][expected_replication_key])
-                    <= self.parse_date(max(replication_dates_1))}
+                if replication_dates_1:
+                    max_replication_date_1 = max(replication_dates_1)
+                    primary_keys_sync_2 = {
+                        tuple(message['data'][pk] for pk in expected_primary_keys)
+                        for message in _SDT.synced_messages_by_stream_2.get(
+                            stream, {}).get('messages', [])
+                        if message.get('action') == 'upsert'
+                        and self.parse_date(message['data'][expected_replication_key])
+                        <= self.parse_date(max_replication_date_1)}
+                else:
+                    primary_keys_sync_2 = set()
 
                 # All three tested streams RESPECTS_START_DATE=True but the sandbox
                 # data all post-dates start_date_2, so both syncs return identical
