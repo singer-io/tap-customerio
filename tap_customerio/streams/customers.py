@@ -34,9 +34,9 @@ class Customers(FullTableStream):
             Pass the IDs collected in step 1 (in batches) to retrieve full customer
             attribute records.
 
-        The base-class implementation sends an empty body to
-        POST /v1/customers/attributes, which returns an empty list because the
-        endpoint requires explicit IDs.
+        The base-class implementation sends a request body that lacks the required
+        `ids` field (for example, an empty JSON object) to POST /v1/customers/attributes,
+        which returns an empty list because the endpoint requires explicit IDs.
         """
         list_endpoint = f"{self.client.base_url}/customers"
         attrs_endpoint = f"{self.client.base_url}/customers/attributes"
