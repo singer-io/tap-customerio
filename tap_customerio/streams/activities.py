@@ -12,33 +12,39 @@ class Activities(FullTableStream):
     data_key = "activities"
     path = "activities"
 
-    # The /v1/activities response returns the next-page cursor under the key
-    # "next", but the REQUEST must pass that value as "start" — not "next".
-    # The base-class get_records() uses next_page_key for both reading the
-    # cursor from the response AND as the request parameter name, so we must
-    # override get_records() here to apply the correct parameter mapping.
-    #
-    # Additionally, the base class sets params["page"] = page_size (1000), but
-    # the activities endpoint only recognises "limit" (max 100).
+    # The /v1/activities endpoint uses a cursor-based pagination scheme where:
+    #   - the response carries the next cursor under "next"
+    #   - the request must send that cursor as the "start" parameter
 
-    _LIMIT = 100  # maximum page size accepted by the activities endpoint
+    next_page_key = "next"
+    next_page_param = "start"
+
+    # The activities endpoint only accepts "limit" (max 100).
+    page_size = 100
 
     def get_records(self) -> Iterator:
         """Paginate the activities endpoint using cursor-based pagination.
 
-        Response key: "next"  (cursor for the next page)
-        Request key:  "start" (cursor to begin the next page from)
+        Overrides the base implementation to:
+        - use "limit" instead of "page" as the page-size parameter
+        - guard against a stuck API (live cursor + empty page → stop)
+
+        Response key: ``next_page_key``  = "next"
+        Request key:  ``next_page_param`` = "start"
         """
-        self.params["limit"] = self._LIMIT
-        next_cursor = None  # No cursor on the first request
+        self.params["limit"] = self.page_size
+        pagination_token = None
+        has_more_pages = True
+        page_number = 0
 
-        while True:
-            if next_cursor:
-                self.params["start"] = next_cursor
-            elif "start" in self.params:
-                # Clean up any stale cursor from a previous call
-                del self.params["start"]
+        while has_more_pages:
+            if pagination_token:
+                self.params[self.next_page_param] = pagination_token
+            elif self.next_page_param in self.params:
+                # Remove any stale cursor left over from a previous call
+                del self.params[self.next_page_param]
 
+            page_number += 1
             response = self.client.make_request(
                 self.http_method,
                 self.url_endpoint,
@@ -49,9 +55,12 @@ class Activities(FullTableStream):
             )
 
             raw_records = response.get(self.data_key) or []
-            next_cursor = response.get("next")  # may be None on the last page
+            if not isinstance(raw_records, list):
+                raw_records = [raw_records]
+
             yield from raw_records
 
-            if not next_cursor:
-                break
+            pagination_token = response.get(self.next_page_key)
 
+            # Continue only when the API provides a cursor AND returned records.
+            has_more_pages = bool(pagination_token) and bool(raw_records)

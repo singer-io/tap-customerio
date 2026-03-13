@@ -44,11 +44,14 @@ class Customers(FullTableStream):
 
         list_params = {"limit": self.page_size}
         start_cursor = None
+        has_more_pages = True
+        page_number = 0
 
-        while True:
+        while has_more_pages:
             if start_cursor:
                 list_params["start"] = start_cursor
 
+            page_number += 1
             list_response = self.client.make_request(
                 "POST",
                 list_endpoint,
@@ -57,7 +60,7 @@ class Customers(FullTableStream):
                 body=json.dumps(ALL_CUSTOMERS_FILTER),
             )
 
-            ids = list_response.get("ids", [])
+            ids = list_response.get("ids") or []
 
             # Fetch full attributes in batches
             for i in range(0, len(ids), ATTRIBUTES_BATCH_SIZE):
@@ -69,8 +72,12 @@ class Customers(FullTableStream):
                     headers,
                     body=json.dumps({"ids": batch_ids}),
                 )
-                yield from attrs_response.get("customers", [])
+                customers = attrs_response.get("customers") or []
+                if not isinstance(customers, list):
+                    customers = [customers]
+                yield from customers
 
             start_cursor = list_response.get("next")
-            if not start_cursor:
-                break
+
+            # Continue only when the API provides a cursor AND returned IDs.
+            has_more_pages = bool(start_cursor) and bool(ids)
