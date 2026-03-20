@@ -98,8 +98,15 @@ class BaseStream(ABC):
         """
 
     def get_records(self) -> Iterator:
-        """Interacts with API client and handles pagination."""
-        self.params["page"] = self.page_size
+        """Interacts with API client and handles pagination.
+
+        NOTE for stream authors: this base implementation sends ``limit`` as
+        the page-size query parameter.  If your endpoint uses a different
+        parameter name (e.g. ``per_page``), override ``get_records()`` in
+        your subclass rather than relying on this behaviour.
+        Activities and Customers already override this method entirely.
+        """
+        self.params["limit"] = self.page_size
         pagination_token = None
         has_more_pages = True
 

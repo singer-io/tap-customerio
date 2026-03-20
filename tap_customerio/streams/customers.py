@@ -3,7 +3,18 @@ from typing import Iterator
 
 from tap_customerio.streams.abstracts import FullTableStream
 
-# Filter that matches every customer (all have a cio_id)
+# Filter that matches every *tracked* customer in the workspace.
+#
+# Assumption: ``cio_id`` is assigned to every profile that has been
+# explicitly identified via the Customer.io identify call or an import.
+# Anonymous/untracked profiles (those that have only been observed through
+# page-view events and have never been identified) will NOT have a ``cio_id``
+# set in all workspace configurations and will therefore be excluded from this
+# filter.
+#
+# If your workspace tracks anonymous profiles that should also be exported,
+# replace or extend this filter to suit your requirements, or make the filter
+# configurable via tap config.
 ALL_CUSTOMERS_FILTER = {
     "filter": {
         "and": [{"attribute": {"field": "cio_id", "operator": "exists"}}]

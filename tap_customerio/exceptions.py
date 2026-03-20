@@ -32,8 +32,14 @@ class customerioConflictError(customerioError):
     """class representing 409 status code."""
     pass
 
-class customerioUnprocessableEntityError(customerioBackoffError):
-    """class representing 422 status code."""
+class customerioUnprocessableEntityError(customerioError):
+    """class representing 422 status code.
+
+    422 Unprocessable Entity indicates the request body is syntactically
+    correct but semantically invalid (e.g. a malformed filter expression).
+    This is a deterministic client-side error that will not resolve on retry;
+    retrying with backoff would only waste API quota.
+    """
     pass
 
 class customerioRateLimitError(customerioBackoffError):
