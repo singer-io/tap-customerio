@@ -1,4 +1,4 @@
-"""Unit tests for Activities.get_records() and Customers.get_records().
+"""Unit tests for Activities.get_records(), Customers.get_records(), and Newsletters.get_records().
 
 Covers:
  - Cursor-based pagination (single and multi-page)
@@ -8,6 +8,7 @@ Covers:
  - Null-safe handling when API returns null for ids / customers keys
  - Two-step flow in Customers (list IDs → fetch attributes in batches)
  - Content-Type header propagation after authenticate() merge fix
+ - Newsletters: updated_since bookmark filter forwarded via self.params
 """
 import json
 import unittest
@@ -19,6 +20,7 @@ from tap_customerio.streams.customers import (
     ALL_CUSTOMERS_FILTER,
     Customers,
 )
+from tap_customerio.streams.newsletters import Newsletters
 
 
 class ConcreteActivities(Activities):
@@ -321,3 +323,125 @@ class TestCustomersGetRecords(unittest.TestCase):
                 msg=f"Content-Type missing from call #{idx + 1}",
             )
             self.assertEqual(headers["Content-Type"], "application/json")
+
+
+# ---------------------------------------------------------------------------
+# Newsletters tests
+# ---------------------------------------------------------------------------
+
+class ConcreteNewsletters(Newsletters):
+    """Concrete Newsletters with required abstract properties satisfied."""
+
+    @property
+    def tap_stream_id(self):
+        return "newsletters"
+
+    @property
+    def replication_method(self):
+        return "INCREMENTAL"
+
+    @property
+    def replication_keys(self):
+        return ["updated"]
+
+    @property
+    def key_properties(self):
+        return ["id"]
+
+
+class TestNewslettersGetRecords(unittest.TestCase):
+    """Tests for Newsletters.get_records() — verifies base-class pagination is used."""
+
+    @patch("tap_customerio.streams.abstracts.metadata.to_map")
+    def setUp(self, mock_to_map):
+        mock_catalog = MagicMock()
+        mock_catalog.schema.to_dict.return_value = {}
+        mock_catalog.metadata = []
+        mock_to_map.return_value = {}
+
+        mock_client = MagicMock()
+        mock_client.base_url = "https://api.customer.io/v1"
+
+        self.stream = ConcreteNewsletters(client=mock_client, catalog=mock_catalog)
+        # Simulate the bookmark filter that IncrementalStream.sync() sets via update_params()
+        self.stream.params["updated_since"] = 1700000000
+
+    def test_single_page_returns_all_records(self):
+        """A response with no 'next' cursor yields records and stops."""
+        self.stream.client.make_request.return_value = {
+            "newsletters": [{"id": 1}, {"id": 2}],
+        }
+
+        records = list(self.stream.get_records())
+
+        self.assertEqual(records, [{"id": 1}, {"id": 2}])
+        self.assertEqual(self.stream.client.make_request.call_count, 1)
+
+    def test_multi_page_yields_all_records_in_order(self):
+        """Pagination across two pages yields records from both pages."""
+        self.stream.client.make_request.side_effect = [
+            {"newsletters": [{"id": 1}], "next": "cursor-page2"},
+            {"newsletters": [{"id": 2}]},
+        ]
+
+        records = list(self.stream.get_records())
+
+        self.assertEqual([r["id"] for r in records], [1, 2])
+        self.assertEqual(self.stream.client.make_request.call_count, 2)
+
+    def test_second_page_request_contains_start_cursor(self):
+        """The 'next' value from page 1 must be sent as 'start' on page 2."""
+        self.stream.client.make_request.side_effect = [
+            {"newsletters": [{"id": 1}], "next": "cursor-abc"},
+            {"newsletters": []},
+        ]
+
+        list(self.stream.get_records())
+
+        second_call_params = self.stream.client.make_request.call_args_list[1][0][2]
+        self.assertEqual(second_call_params.get("start"), "cursor-abc")
+
+    def test_updated_since_bookmark_forwarded_to_api(self):
+        """The updated_since param set via update_params() must be sent to the API."""
+        self.stream.client.make_request.return_value = {"newsletters": []}
+
+        list(self.stream.get_records())
+
+        first_call_params = self.stream.client.make_request.call_args[0][2]
+        self.assertIn("updated_since", first_call_params)
+        self.assertEqual(first_call_params["updated_since"], 1700000000)
+
+    def test_limit_param_is_sent(self):
+        """The 'limit' page-size parameter must be present on every request."""
+        self.stream.client.make_request.return_value = {"newsletters": []}
+
+        list(self.stream.get_records())
+
+        first_call_params = self.stream.client.make_request.call_args[0][2]
+        self.assertIn("limit", first_call_params)
+        self.assertEqual(first_call_params["limit"], self.stream.page_size)
+
+    def test_falsy_next_cursor_terminates_pagination(self):
+        """A None 'next' value must stop iteration after one page."""
+        self.stream.client.make_request.return_value = {
+            "newsletters": [{"id": 1}],
+            "next": None,
+        }
+
+        records = list(self.stream.get_records())
+
+        self.assertEqual(len(records), 1)
+        self.assertEqual(self.stream.client.make_request.call_count, 1)
+
+    @parameterized.expand([
+        ["key_absent",   {}],
+        ["key_is_null",  {"newsletters": None}],
+        ["key_is_empty", {"newsletters": []}],
+    ])
+    def test_missing_or_null_data_key_returns_empty_list(self, name, response):
+        """None or absent data_key must not raise TypeError and yields nothing."""
+        self.stream.client.make_request.return_value = response
+
+        records = list(self.stream.get_records())
+
+        self.assertEqual(records, [])
