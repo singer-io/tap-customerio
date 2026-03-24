@@ -29,7 +29,8 @@ class BaseStream(ABC):
     url_endpoint = ""
     path = ""
     page_size = 1000
-    next_page_key = "next"
+    next_page_key = "next"    # key used to read the next-page cursor from the response
+    next_page_param = None    # param name used to send the cursor in the next request
     headers = {'Accept': 'application/json'}
     children = []
     parent = ""
@@ -97,10 +98,22 @@ class BaseStream(ABC):
         """
 
     def get_records(self) -> Iterator:
-        """Interacts with API client and handles pagination."""
-        self.params["page"] = self.page_size
-        next_page = 1  # Start from page 1
-        while next_page:
+        """Interacts with API client and handles pagination.
+
+        NOTE for stream authors: this base implementation sends ``limit`` as
+        the page-size query parameter.  If your endpoint uses a different
+        parameter name (e.g. ``per_page``), override ``get_records()`` in
+        your subclass rather than relying on this behaviour.
+        Activities and Customers already override this method entirely.
+        """
+        self.params["limit"] = self.page_size
+        pagination_token = None
+        has_more_pages = True
+
+        while has_more_pages:
+            if pagination_token and self.next_page_param:
+                self.params[self.next_page_param] = pagination_token
+
             response = self.client.make_request(
                 self.http_method,
                 self.url_endpoint,
@@ -109,12 +122,14 @@ class BaseStream(ABC):
                 body=json.dumps(self.data_payload),
                 path=self.path
             )
-            raw_records = response.get(self.data_key, None)
-            if raw_records is None:
-                raw_records = []  # Default to an empty list if None
-            next_page = response.get(self.next_page_key)
-            self.params[self.next_page_key] = next_page
+            raw_records = response.get(self.data_key) or []
+            if not isinstance(raw_records, list):
+                raw_records = [raw_records]
+
             yield from raw_records
+
+            pagination_token = response.get(self.next_page_key) if self.next_page_key else None
+            has_more_pages = bool(pagination_token)
 
     def write_schema(self) -> None:
         """

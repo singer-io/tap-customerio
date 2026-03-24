@@ -53,7 +53,7 @@ class TestClient(unittest.TestCase):
         """Set up the client with default configuration."""
         self.client = Client(default_config)
 
-    @parameterized.expand([    
+    @parameterized.expand([
         ["empty value", "", DEFAULT_REQUEST_TIMEOUT],
         ["string value", "12", 12.0],
         ["integer value", 10, 10.0],
@@ -89,9 +89,10 @@ class TestClient(unittest.TestCase):
         ["403 error", 403, MockResponse(403), customerioForbiddenError, "You are missing the following required scopes: read"],
         ["404 error", 404, MockResponse(404), customerioNotFoundError, "The resource you have specified cannot be found."],
         ["409 error", 409, MockResponse(409), customerioConflictError, "The API request cannot be completed because the requested operation would conflict with an existing item."],
+        ["422 error", 422, MockResponse(422), customerioUnprocessableEntityError, "The request content itself is not processable by the server."],
     ])
     def test_make_request_http_failure_without_retry(self, test_name, error_code, mock_response, error, error_message):
-        
+
         with patch.object(self.client._session, "request", return_value=mock_response):
             with self.assertRaises(error) as e:
                 self.client._Client__make_request("GET", "https://api.example.com/resource")
@@ -100,7 +101,6 @@ class TestClient(unittest.TestCase):
         self.assertEqual(str(e.exception), expected_error_message)
 
     @parameterized.expand([
-        ["422 error", 422, MockResponse(422), customerioUnprocessableEntityError, "The request content itself is not processable by the server."],
         ["429 error", 429, MockResponse(429), customerioRateLimitError, "The API rate limit for your organisation/application pairing has been exceeded."],
         ["500 error", 500, MockResponse(500), customerioInternalServerError, "The server encountered an unexpected condition which prevented it from fulfilling the request."],
         ["501 error", 501, MockResponse(501), customerioNotImplementedError, "The server does not support the functionality required to fulfill the request."],
@@ -109,7 +109,7 @@ class TestClient(unittest.TestCase):
     ])
     @patch("time.sleep")
     def test_make_request_http_failure_with_retry(self, test_name, error_code, mock_response, error, error_message, mock_sleep):
-        
+
         with patch.object(self.client._session, "request", return_value=mock_response) as mock_request:
             with self.assertRaises(error) as e:
                 self.client._Client__make_request("GET", "https://api.example.com/resource")
@@ -126,9 +126,9 @@ class TestClient(unittest.TestCase):
     ])
     @patch("time.sleep")
     def test_make_request_other_failure_with_retry(self, test_name, error, mock_sleep):
-        
+
         with patch.object(self.client._session, "request", side_effect=error) as mock_request:
             with self.assertRaises(error) as e:
                 self.client._Client__make_request("GET", "https://api.example.com/resource")
-            
+
             self.assertEqual(mock_request.call_count, 5)
