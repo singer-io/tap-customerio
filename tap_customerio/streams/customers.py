@@ -56,13 +56,11 @@ class Customers(FullTableStream):
         list_params = {"limit": self.page_size}
         start_cursor = None
         has_more_pages = True
-        page_number = 0
 
         while has_more_pages:
             if start_cursor:
                 list_params["start"] = start_cursor
 
-            page_number += 1
             list_response = self.client.make_request(
                 "POST",
                 list_endpoint,

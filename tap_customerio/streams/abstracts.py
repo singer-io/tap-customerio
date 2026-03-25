@@ -105,13 +105,33 @@ class BaseStream(ABC):
         parameter name (e.g. ``per_page``), override ``get_records()`` in
         your subclass rather than relying on this behaviour.
         Activities and Customers already override this method entirely.
+
+        Pagination contract
+        -------------------
+        When the API returns a cursor under ``next_page_key``, this method
+        forwards it to the next request via the query-parameter named by
+        ``next_page_param``.  If a cursor is received but ``next_page_param``
+        is ``None`` (the class default), a ``NotImplementedError`` is raised
+        immediately to prevent an infinite loop of identical requests.
+        Paginated streams *must* set ``next_page_param`` on their class.
         """
         self.params["limit"] = self.page_size
         pagination_token = None
         has_more_pages = True
 
         while has_more_pages:
-            if pagination_token and self.next_page_param:
+            if pagination_token:
+                if self.next_page_param is None:
+                    raise NotImplementedError(
+                        f"Stream '{self.tap_stream_id}' received a pagination "
+                        f"cursor from response key '{self.next_page_key}' but "
+                        "'next_page_param' is not set on the stream class. "
+                        "Set 'next_page_param' to the query-parameter name that "
+                        "carries the cursor (e.g. next_page_param = 'start'), or "
+                        "override 'get_records()' to handle pagination manually. "
+                        "Leaving 'next_page_param' as None while the API returns "
+                        "a cursor would cause an infinite loop of identical requests."
+                    )
                 self.params[self.next_page_param] = pagination_token
 
             response = self.client.make_request(

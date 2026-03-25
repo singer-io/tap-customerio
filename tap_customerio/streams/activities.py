@@ -35,7 +35,6 @@ class Activities(FullTableStream):
         self.params["limit"] = self.page_size
         pagination_token = None
         has_more_pages = True
-        page_number = 0
 
         while has_more_pages:
             if pagination_token:
@@ -44,7 +43,6 @@ class Activities(FullTableStream):
                 # Remove any stale cursor left over from a previous call
                 del self.params[self.next_page_param]
 
-            page_number += 1
             response = self.client.make_request(
                 self.http_method,
                 self.url_endpoint,
