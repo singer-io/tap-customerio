@@ -12,7 +12,7 @@ setup(name="tap-customerio",
       py_modules=["tap_customerio"],
       install_requires=[
         "singer-python==6.1.1",
-        "requests==2.32.4",
+        "requests==2.33.1",
         "backoff==2.2.1",
         "parameterized"
       ],
