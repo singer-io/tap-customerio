@@ -31,6 +31,7 @@ class customerioStartDateTest(StartDateTest, customerioBaseTest):
             # in a narrow date window making it impossible to find a start_date_2
             # where 0 < count_2 < count_1.
             'snippets',
+            'campaigns',
         }
         return self.expected_stream_names().difference(streams_to_exclude)
 

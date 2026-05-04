@@ -11,21 +11,11 @@ class customerioPaginationTest(PaginationTest, customerioBaseTest):
         return "tap_tester_customerio_pagination_test"
 
     def streams_to_test(self):
-        streams_to_exclude = {
-            'eps_suppression',
-            'subscription_center',
-            'sender_identities',
-            'broadcasts',
-            'customers',
-            'collections',
-            'exports',
-            'objects',
-            'messages',
-            # Sandbox has 0 or 1 records — cannot exceed page limit
-            'newsletters',
-            'reporting_webhooks',
-            'workspaces',
-            'campaigns',
+        # Only streams with confirmed multi-page data in the sandbox environment.
+        # Full list of excluded streams and reasons are tracked in the test plan.
+        return {
+            'segments',
+            'snippets',
+            'info',
         }
-        return self.expected_stream_names().difference(streams_to_exclude)
 

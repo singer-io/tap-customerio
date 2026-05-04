@@ -13,18 +13,18 @@ class customerioInterruptedSyncTest(InterruptedSyncTest, customerioBaseTest):
 
     def streams_to_test(self):
         # Only INCREMENTAL streams that produce records in the sandbox.
-        return {'segments', 'transactional_messages', 'campaigns'}
+        # campaigns excluded: 0 records in sandbox environment.
+        return {'segments', 'transactional_messages'}
 
     def manipulate_state(self):
-        # Actual tap sync order is: campaigns → segments → transactional_messages
+        # Actual tap sync order is: segments → transactional_messages
         # To satisfy test_interrupted_sync_stream_order:
-        #   [0] interrupted  = campaigns         (currently_syncing, in bookmarks)
-        #   [1] not-yet-synced = segments        (absent from bookmarks)
-        #   [2] already-synced = transactional_messages (in bookmarks, not currently_syncing)
+        #   [0] interrupted    = segments                (currently_syncing, in bookmarks)
+        #   [1] already-synced = transactional_messages  (in bookmarks, not currently_syncing)
         return {
-            "currently_syncing": "campaigns",
+            "currently_syncing": "segments",
             "bookmarks": {
-                "campaigns":             {"updated":    "2020-01-01T00:00:00Z"},
+                "segments":              {"updated_at": "2020-01-01T00:00:00Z"},
                 "transactional_messages": {"updated_at": "2020-01-01T00:00:00Z"},
             }
         }

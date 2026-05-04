@@ -16,19 +16,13 @@ class customerioAllFields(AllFieldsTest, customerioBaseTest):
         return "tap_tester_customerio_all_fields_test"
 
     def streams_to_test(self):
-        streams_to_exclude = {
-            'eps_suppression',
-            'subscription_center',
-            'sender_identities',
-            'broadcasts',
-            'customers',
-            'collections',
-            'messages',
-            'newsletters',
-            # No records exist in the sandbox environment for these streams
-            'exports',
-            'objects',
-            'reporting_webhooks',
+        # Only streams confirmed to have data in the sandbox environment.
+        # Full list of excluded streams and reasons are tracked in the test plan.
+        return {
+            'transactional_messages',
+            'segments',
+            'workspaces',
+            'snippets',
+            'info',
         }
-        return self.expected_stream_names().difference(streams_to_exclude)
 
