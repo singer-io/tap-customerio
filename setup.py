@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 
 setup(name="tap-customerio",
-      version="0.0.1",
+      version="0.1.0",
       description="Singer.io tap for extracting data from customerio API",
       author="Stitch",
       url="http://singer.io",
@@ -12,7 +12,7 @@ setup(name="tap-customerio",
       py_modules=["tap_customerio"],
       install_requires=[
         "singer-python==6.1.1",
-        "requests==2.32.4",
+        "requests==2.33.1",
         "backoff==2.2.1",
         "parameterized"
       ],

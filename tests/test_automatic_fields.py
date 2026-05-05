@@ -13,14 +13,13 @@ class customerioAutomaticFields(MinimumSelectionTest, customerioBaseTest):
         return "tap_tester_customerio_automatic_fields_test"
 
     def streams_to_test(self):
-        streams_to_exclude = {
-            'eps_suppression',
-            'subscription_center',
-            'sender_identities',
-            'broadcasts',
-            'customers',
-            'collections',
-            'messages'
+        # Only streams confirmed to have data in the sandbox environment.
+        # Full list of excluded streams and reasons are tracked in the test plan.
+        return {
+            'transactional_messages',
+            'segments',
+            'workspaces',
+            'snippets',
+            'info',
         }
-        return self.expected_stream_names().difference(streams_to_exclude)
 
