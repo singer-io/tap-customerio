@@ -13,8 +13,10 @@ def discover(client=None) -> Catalog:
     """
     Run the discovery mode, prepare the catalog file and return the catalog.
     If a client is provided, each stream's endpoint is tested for accessibility.
-    Streams that are inaccessible (due to permissions or any other reason) are
-    skipped and will not appear in the catalog.
+    Streams that return HTTP 403 (Forbidden) are excluded from the catalog.
+    HTTP 401 (Unauthorized) raises immediately as it indicates an invalid token.
+    Any other error during probing is logged as a warning and the stream is
+    included in the catalog, since permissions cannot be determined.
     """
     schemas, field_metadata = get_schemas()
     catalog = Catalog([])
@@ -40,7 +42,7 @@ def discover(client=None) -> Catalog:
                     fmt = {}
                     for ph in placeholders:
                         values = getattr(stream_class, ph + 's', None)
-                        if isinstance(values, list) and values:
+                        if isinstance(values, (list, tuple)) and values:
                             fmt[ph] = values[0]
                     if len(fmt) == len(placeholders):
                         path = path.format(**fmt)
@@ -49,7 +51,14 @@ def discover(client=None) -> Catalog:
                 if path is not None:
                     try:
                         client.make_request(stream_class.http_method, "", params={"limit": 1}, path=path)
-                    except (customerioUnauthorizedError, customerioForbiddenError) as err:
+                    except customerioUnauthorizedError:
+                        LOGGER.critical(
+                            "Authentication failed during discovery for stream '%s': "
+                            "invalid or expired access token.",
+                            stream_name
+                        )
+                        raise
+                    except customerioForbiddenError as err:
                         LOGGER.warning(
                             "Skipping stream '%s' from catalog: insufficient permissions (HTTP %s). Error: %s",
                             stream_name,
