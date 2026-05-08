@@ -57,6 +57,14 @@ def discover(client=None) -> Catalog:
                             err
                         )
                         continue
+                    except Exception as err:
+                        # Any other error (400, 404, 500, network, etc.) means we cannot
+                        # determine permissions — include the stream in the catalog.
+                        LOGGER.warning(
+                            "Could not verify access for stream '%s' during discovery: %s. "
+                            "Including in catalog.",
+                            stream_name, err
+                        )
 
         key_properties = metadata.to_map(mdata).get((), {}).get("table-key-properties")
 
