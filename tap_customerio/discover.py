@@ -1,14 +1,20 @@
+import re
 import singer
 from singer import metadata
 from singer.catalog import Catalog, CatalogEntry, Schema
 from tap_customerio.schema import get_schemas
+from tap_customerio.streams import STREAMS
+from tap_customerio.exceptions import customerioUnauthorizedError, customerioForbiddenError
 
 LOGGER = singer.get_logger()
 
 
-def discover() -> Catalog:
+def discover(client=None) -> Catalog:
     """
     Run the discovery mode, prepare the catalog file and return the catalog.
+    If a client is provided, each stream's endpoint is tested for accessibility.
+    Streams that are inaccessible (due to permissions or any other reason) are
+    skipped and will not appear in the catalog.
     """
     schemas, field_metadata = get_schemas()
     catalog = Catalog([])
@@ -22,6 +28,35 @@ def discover() -> Catalog:
             LOGGER.error("stream_name: {}".format(stream_name))
             LOGGER.error("type schema_dict: {}".format(type(schema_dict)))
             raise err
+
+        if client is not None:
+            stream_class = STREAMS.get(stream_name)
+            if stream_class is not None:
+                path = stream_class.path
+                if "{" in path:
+                    # Resolve template placeholders using class-level list attributes
+                    # e.g. {suppression_type} -> suppression_types[0]
+                    placeholders = re.findall(r'\{(\w+)\}', path)
+                    fmt = {}
+                    for ph in placeholders:
+                        values = getattr(stream_class, ph + 's', None)
+                        if isinstance(values, list) and values:
+                            fmt[ph] = values[0]
+                    if len(fmt) == len(placeholders):
+                        path = path.format(**fmt)
+                    else:
+                        path = None  # Cannot resolve all placeholders, skip probing
+                if path is not None:
+                    try:
+                        client.make_request(stream_class.http_method, "", params={"limit": 1}, path=path)
+                    except (customerioUnauthorizedError, customerioForbiddenError) as err:
+                        LOGGER.warning(
+                            "Skipping stream '%s' from catalog: insufficient permissions (HTTP %s). Error: %s",
+                            stream_name,
+                            err.response.status_code if err.response is not None else "unknown",
+                            err
+                        )
+                        continue
 
         key_properties = metadata.to_map(mdata).get((), {}).get("table-key-properties")
 
