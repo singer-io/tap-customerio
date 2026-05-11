@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 from tap_customerio.discover import discover
 from tap_customerio.exceptions import (
@@ -49,7 +49,7 @@ class TestDiscoverProbing(unittest.TestCase):
         stream_names = {s.stream for s in catalog.streams}
         self.assertNotIn("campaigns", stream_names)
 
-    def test_stream_included_on_non_permission_error(self):
+    def test_non_permission_error_reraises(self):
         bad_request_response = MagicMock()
         bad_request_response.status_code = 400
         bad_request_err = customerioBadRequestError("HTTP-error-code: 400", bad_request_response)
@@ -57,13 +57,11 @@ class TestDiscoverProbing(unittest.TestCase):
         def side_effect(method, endpoint, params=None, path=None, **kwargs):
             if path == "campaigns":
                 raise bad_request_err
-            # all other streams succeed
 
         client = _make_client(side_effect=side_effect)
-        catalog = discover(client=client)
-        stream_names = {s.stream for s in catalog.streams}
-        # 400 must NOT exclude the stream — permissions could not be determined
-        self.assertIn("campaigns", stream_names)
+        # 400 is not a permission error — it re-raises and does not silently include the stream
+        with self.assertRaises(customerioBadRequestError):
+            discover(client=client)
 
     def test_401_raises_immediately(self):
         unauthorized_response = MagicMock()
@@ -71,8 +69,9 @@ class TestDiscoverProbing(unittest.TestCase):
         unauthorized_err = customerioUnauthorizedError("HTTP-error-code: 401", unauthorized_response)
 
         client = _make_client(side_effect=unauthorized_err)
-        with self.assertRaises(customerioUnauthorizedError):
+        with self.assertRaises(Exception) as ctx:
             discover(client=client)
+        self.assertIsInstance(ctx.exception.__cause__, customerioUnauthorizedError)
 
     def test_eps_suppression_included_on_successful_probe(self):
         """eps_suppression path is templated; it should be probed with first suppression_type."""

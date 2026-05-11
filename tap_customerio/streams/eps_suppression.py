@@ -13,9 +13,8 @@ class EpsSuppression(FullTableStream):
     suppression_types = ("bounces", "spam_reports")
 
     def get_records(self) -> Iterator[Dict]:
-        suppression_types = self.suppression_types
         self.params["page"] = self.page_size
-        for suppression_type in suppression_types:
+        for suppression_type in self.suppression_types:
             path = self.path.format(suppression_type=suppression_type)
             next_page = 1
 

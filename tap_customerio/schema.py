@@ -4,8 +4,46 @@ import singer
 from typing import Dict, Tuple
 from singer import metadata
 from tap_customerio.streams import STREAMS
+from tap_customerio.exceptions import customerioUnauthorizedError, customerioForbiddenError
 
 LOGGER = singer.get_logger()
+
+
+def _resolve_probe_path(stream_class):
+    """
+    Returns a concrete probe path for the stream class.
+    For templated paths, uses the first value from suppression_types.
+    """
+    if stream_class.suppression_types:
+        return stream_class.path.format(suppression_type=stream_class.suppression_types[0])
+    return stream_class.path
+
+
+def has_stream_access(client, stream_name, stream_class):
+    """
+    Probes the stream endpoint to verify access permissions.
+
+    Returns True if accessible, False on HTTP 403 (stream excluded from catalog).
+    Raises immediately on HTTP 401 (invalid token).
+    All other errors are re-raised.
+    """
+    probe_path = _resolve_probe_path(stream_class)
+    try:
+        client.make_request(stream_class.http_method, "", params={"limit": 1}, path=probe_path)
+        return True
+    except customerioUnauthorizedError as ex:
+        raise Exception(
+            "Authentication failed during discovery for stream '%s': "
+            "invalid or expired access token." % stream_name
+        ) from ex
+    except customerioForbiddenError as err:
+        LOGGER.warning(
+            "Skipping stream '%s' from catalog: insufficient permissions (HTTP %s). Error: %s",
+            stream_name,
+            err.response.status_code if err.response is not None else "unknown",
+            err
+        )
+        return False
 
 
 def get_abs_path(path: str) -> str:
@@ -37,15 +75,21 @@ def load_schema_references() -> Dict:
     return refs
 
 
-def get_schemas() -> Tuple[Dict, Dict]:
+def get_schemas(client=None) -> Tuple[Dict, Dict]:
     """
-    Load the schema references, prepare metadata for each streams and return schema and metadata for the catalog.
+    Load the schema references, prepare metadata for each stream and return
+    schema and metadata for the catalog.
+    If a client is provided, each stream's endpoint is probed for access;
+    streams returning HTTP 403 are excluded.
     """
     schemas = {}
     field_metadata = {}
 
     refs = load_schema_references()
     for stream_name, stream_obj in STREAMS.items():
+        if client is not None and not has_stream_access(client, stream_name, stream_obj):
+            continue
+
         schema_path = get_abs_path("schemas/{}.json".format(stream_name))
         with open(schema_path) as file:
             schema = json.load(file)
