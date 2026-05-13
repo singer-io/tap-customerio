@@ -26,10 +26,22 @@ def has_stream_access(client, stream_name, stream_class):
     Returns True if accessible, False on HTTP 403 (stream excluded from catalog).
     Raises immediately on HTTP 401 (invalid token).
     All other errors are re-raised.
+
+    For GET streams, a lightweight request with limit=1 is used.
+    For POST streams, the stream's probe_body is sent as a minimal valid request.
     """
     probe_path = _resolve_probe_path(stream_class)
     try:
-        client.make_request(stream_class.http_method, "", params={"limit": 1}, path=probe_path)
+        if stream_class.http_method == "GET":
+            client.make_request("GET", "", params={"limit": 1}, path=probe_path)
+        else:
+            client.make_request(
+                stream_class.http_method,
+                "",
+                headers={"Content-Type": "application/json"},
+                body=json.dumps(stream_class.probe_body or {}),
+                path=probe_path,
+            )
         return True
     except customerioUnauthorizedError as ex:
         raise Exception(

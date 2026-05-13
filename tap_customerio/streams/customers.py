@@ -32,6 +32,7 @@ class Customers(FullTableStream):
     data_key = "customers"
     path = "customers/attributes"
     http_method = "POST"
+    probe_body = {"ids": []}
 
     def get_records(self) -> Iterator:
         """
