@@ -33,11 +33,10 @@ def has_stream_access(client, stream_name, stream_class):
     probe_path = _resolve_probe_path(stream_class)
     try:
         if stream_class.http_method == "GET":
-            client.make_request("GET", "", params={"limit": 1}, path=probe_path)
+            client.make_request("GET", params={"limit": 1}, path=probe_path)
         else:
             client.make_request(
                 stream_class.http_method,
-                "",
                 headers={"Content-Type": "application/json"},
                 body=json.dumps(stream_class.probe_body or {}),
                 path=probe_path,

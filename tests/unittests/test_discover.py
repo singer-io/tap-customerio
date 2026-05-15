@@ -42,7 +42,7 @@ class TestDiscoverProbing(unittest.TestCase):
         forbidden_response.status_code = 403
         forbidden_err = customerioForbiddenError("HTTP-error-code: 403", forbidden_response)
 
-        def side_effect(method, endpoint, params=None, path=None, **kwargs):
+        def side_effect(method, endpoint=None, params=None, path=None, **kwargs):
             if path == "campaigns":
                 raise forbidden_err
             # all other streams succeed
@@ -57,7 +57,7 @@ class TestDiscoverProbing(unittest.TestCase):
         bad_request_response.status_code = 400
         bad_request_err = customerioBadRequestError("HTTP-error-code: 400", bad_request_response)
 
-        def side_effect(method, endpoint, params=None, path=None, **kwargs):
+        def side_effect(method, endpoint=None, params=None, path=None, **kwargs):
             if path == "campaigns":
                 raise bad_request_err
 
@@ -88,7 +88,7 @@ class TestDiscoverProbing(unittest.TestCase):
         forbidden_response.status_code = 403
         forbidden_err = customerioForbiddenError("HTTP-error-code: 403", forbidden_response)
 
-        def side_effect(method, endpoint, params=None, path=None, **kwargs):
+        def side_effect(method, endpoint=None, params=None, path=None, **kwargs):
             if path == "esp/suppression/bounces":
                 raise forbidden_err
 
@@ -104,7 +104,7 @@ class TestDiscoverProbing(unittest.TestCase):
 
         restricted = {"campaigns", "broadcasts"}
 
-        def side_effect(method, endpoint, params=None, path=None, **kwargs):
+        def side_effect(method, endpoint=None, params=None, path=None, **kwargs):
             if path in restricted:
                 raise forbidden_err
 
@@ -136,7 +136,7 @@ class TestDiscoverProbing(unittest.TestCase):
         forbidden_response.status_code = 403
         forbidden_err = customerioForbiddenError("HTTP-error-code: 403", forbidden_response)
 
-        def side_effect(method, endpoint, params=None, path=None, **kwargs):
+        def side_effect(method, endpoint=None, params=None, path=None, **kwargs):
             if path == "customers/attributes" and method == "POST":
                 raise forbidden_err
 
