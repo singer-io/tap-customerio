@@ -25,7 +25,7 @@ def has_stream_access(client, stream_name, stream_class):
 
     Returns True if accessible, False on HTTP 403 (stream excluded from catalog).
     Raises immediately on HTTP 401 (invalid token).
-    All other errors are re-raised.
+    All other exceptions propagate unchanged.
 
     For GET streams, a lightweight request with limit=1 is used.
     For POST streams, the stream's probe_body is sent as a minimal valid request.
@@ -46,7 +46,8 @@ def has_stream_access(client, stream_name, stream_class):
     except customerioUnauthorizedError as ex:
         raise Exception(
             "Authentication failed during discovery for stream '%s': "
-            "invalid or expired access token." % stream_name
+            "invalid or expired access token.",
+            stream_name
         ) from ex
     except customerioForbiddenError as err:
         LOGGER.warning(
@@ -87,19 +88,18 @@ def load_schema_references() -> Dict:
     return refs
 
 
-def get_schemas(client=None) -> Tuple[Dict, Dict]:
+def get_schemas(client) -> Tuple[Dict, Dict]:
     """
     Load the schema references, prepare metadata for each stream and return
     schema and metadata for the catalog.
-    If a client is provided, each stream's endpoint is probed for access;
-    streams returning HTTP 403 are excluded.
+    Each stream's endpoint is probed for access; streams returning HTTP 403 are excluded.
     """
     schemas = {}
     field_metadata = {}
 
     refs = load_schema_references()
     for stream_name, stream_obj in STREAMS.items():
-        if client is not None and not has_stream_access(client, stream_name, stream_obj):
+        if not has_stream_access(client, stream_name, stream_obj):
             continue
 
         schema_path = get_abs_path("schemas/{}.json".format(stream_name))
@@ -130,4 +130,3 @@ def get_schemas(client=None) -> Tuple[Dict, Dict]:
         field_metadata[stream_name] = mdata
 
     return schemas, field_metadata
-

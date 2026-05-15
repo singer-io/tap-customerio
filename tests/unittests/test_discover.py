@@ -18,11 +18,12 @@ def _make_client(side_effect=None):
     return client
 
 
-class TestDiscoverWithoutClient(unittest.TestCase):
-    """discover() with no client should return all streams without probing."""
+class TestDiscoverWithClient(unittest.TestCase):
+    """discover() with a client returns all accessible streams."""
 
-    def test_returns_all_streams_when_no_client(self):
-        catalog = discover(client=None)
+    def test_returns_all_streams_when_all_accessible(self):
+        client = _make_client(side_effect=None)
+        catalog = discover(client=client)
         self.assertIsNotNone(catalog)
         self.assertGreater(len(catalog.streams), 0)
 
