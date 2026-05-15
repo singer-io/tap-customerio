@@ -10,11 +10,11 @@ class EpsSuppression(FullTableStream):
     replication_keys = []
     data_key = "suppressions"
     path = "esp/suppression/{suppression_type}"
+    suppression_types = ("bounces", "spam_reports")
 
     def get_records(self) -> Iterator[Dict]:
-        suppression_types = ["bounces", "spam_reports"]
         self.params["page"] = self.page_size
-        for suppression_type in suppression_types:
+        for suppression_type in self.suppression_types:
             path = self.path.format(suppression_type=suppression_type)
             next_page = 1
 
