@@ -70,7 +70,7 @@ class Client:
     def make_request(
         self,
         method: str,
-        endpoint: str,
+        endpoint: Optional[str] = None,
         params: Optional[Dict[str, Any]] = None,
         headers: Optional[Dict[str, Any]] = None,
         body: Optional[Dict[str, Any]] = None,

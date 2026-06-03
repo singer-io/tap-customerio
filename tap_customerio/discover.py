@@ -5,12 +5,14 @@ from tap_customerio.schema import get_schemas
 
 LOGGER = singer.get_logger()
 
-
-def discover() -> Catalog:
+def discover(client) -> Catalog:
     """
     Run the discovery mode, prepare the catalog file and return the catalog.
+    Each stream's endpoint is tested for accessibility.
+    Streams that return HTTP 403 (Forbidden) are excluded from the catalog.
+    HTTP 401 (Unauthorized) raises immediately as it indicates an invalid token.
     """
-    schemas, field_metadata = get_schemas()
+    schemas, field_metadata = get_schemas(client)
     catalog = Catalog([])
 
     for stream_name, schema_dict in schemas.items():
